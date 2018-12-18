@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+    <!--
+        AS Rose, AR Bradley, Y Valasatava, JM Duarte, A Prlić and PW Rose.
+            Web-based molecular graphics for large complexes. ACM Proceedings of the 21st International
+            Conference on Web3D Technology (Web3D '16): 185-186, 2016. doi:10.1145/2945292.2945324
+    
+        AS Rose and PW Hildebrand. NGL Viewer: a web application for molecular visualization. Nucl
+            Acids Res (1 July 2015) 43 (W1): W576-W579 first published online April 29, 2015.
+            doi:10.1093/nar/gkv402
+    -->
+
+    <script src="https://graceba.github.io/NGL/ngl.js"></script>
+    <script>
+
+        var file = "rcsb://1crn";
+        var stage;
+
+        function changeFile() {
+            file = "rcsb://" + document.getElementById("fileSelect").value;
+            document.getElementById("viewport").innerHTML = '';
+            var stage = new NGL.Stage("viewport");
+            stage.loadFile(file, { defaultRepresentation: true });
+            document.getElementById("info").innerHTML = file;
+        }
+
+            document.addEventListener("DOMContentLoaded", function () {
+            var stage = new NGL.Stage("viewport");
+            stage.loadFile(file, { defaultRepresentation: true });
+            document.getElementById("info").innerHTML = file;
+        });
+
+
+
+    </script>
+    <div id="viewport" style="width:400px; height:300px;"></div>
+    <input type="text" id="fileSelect" value="4ewn" /> <br />
+    <input type="button" onclick="changeFile()" value="load" /> <br />
+
+    <div style='position: fixed; bottom: 10px; right: 10px; width:100%; text-align: right; z-index: 1;'>
+        <a id="info"></a>
+    </div>
+</body>
+</html>
