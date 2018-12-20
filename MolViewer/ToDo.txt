@@ -1,0 +1,28 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TO DO:
+import any number of files		*
+	do I need to combine files?
+create model repository			*
+pull model from source			*
+control scale/position (for model)	*
+change file location for loading	*
+make *nice* menu navigation		*
+	
+
+done
+/convert file input to -> string		
+/set input as source for a-asset-item	
+/refresh a-asset-item 			
+/have dynamic buttons to toggle	
+/recieve file input from -> user
+/take text input
+/different number of targets	
+/how to specify which target is which?	
+/check if file actually EXISTS			
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Would be nice...
+get info to fade after a bit		nah.
+user control scale			*
+make js in separate file		*
+/Press enter when entering text		
