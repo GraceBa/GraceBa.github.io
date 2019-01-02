@@ -1,7 +1,5 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TO DO:
-import any number of files		*
-	do I need to combine files?
 create model repository			*
 pull model from source			*
 control scale/position (for model)	*
@@ -10,6 +8,7 @@ make *nice* menu navigation		*
 	
 
 done
+/import any number of files	
 /convert file input to -> string		
 /set input as source for a-asset-item	
 /refresh a-asset-item 			
@@ -25,4 +24,5 @@ Would be nice...
 get info to fade after a bit		nah.
 user control scale			*
 make js in separate file		*
+
 /Press enter when entering text		
