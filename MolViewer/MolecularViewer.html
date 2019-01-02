@@ -4,137 +4,194 @@
     <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/aframe-ar.js"></script>
     <meta charset="UTF-8">
 
-<body style='margin : 0px; overflow: hidden;'>
-    <a-scene id="currentScene" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' foo>
+    <body style='margin : 0px; overflow: hidden;'>
+        <a-scene id="currentScene" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' foo>
 
-        <!-- *************************************************************************************************-->
-        <!-- Custom js events -->
-        <!-- *************************************************************************************************-->
-        <script type="text/javascript">
+            <!-- *************************************************************************************************-->
+            <!-- Custom js events -->
+            <!-- *************************************************************************************************-->
+            <script type="text/javascript">
+//~~~~~~~~~~ define file sources
+                var markersource = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/";
+                var modelsource = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Models/";
+
+                function revert(){
+                    markersource = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/";
+                    document.getElementById("markerSourceInput").value = markersource;
+                }
+
+                function setMarkerSource() {
+                    markersource = document.getElementById("markerSourceInput").value;
+                }
+                
+                
 
 //~~~~~~~~~~ Check for non-existent pattern files
-            function tryme() {
-                var markername = document.getElementById("markerInput").value;
-                var marker = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/" + markername + ".patt";
-                var http = new XMLHttpRequest();
-                http.onload = function () {
-                    selectModel(this.status, marker);
+               function tryme() {
+                    var markername = document.getElementById("markerInput").value;
+                    var marker = markersource + markername + ".patt";
+                    var http = new XMLHttpRequest();
+                    http.onload = function () {
+                        selectModel(this.status, marker);
+                    }
+                    http.open('HEAD', marker, true);
+                    http.send();
+                    //selectModel(200,marker)
                 }
-                http.open('HEAD', marker, true);
-                http.send();
-                //selectModel(200,marker)
-            }
 
 //~~~~~~~~~~ import a model
-            function selectModel(status, marker) {
-                //take user input
-                var modelname = document.getElementById("userInput").value;     //name of 3D AR model
-                var markername = document.getElementById("markerInput").value;  //name of target image marker
+                function selectModel(status, marker) {
+                    //take user input
+                    var modelname = document.getElementById("userInput").value;     //name of 3D AR model
+                    var markername = document.getElementById("markerInput").value;  //name of target image marker
 
-                if((status === 200) && !(document.getElementById(markername + modelname))){ //if the marker location exists and does not already have the called model
-                    //*** if marker does not already exist, create it. ***
-                    if (document.getElementById(markername) == null) {
-                        //create a new a-marker element
-                        var a_marker = document.createElement("a-marker");
-                        var element = document.getElementById("currentScene");
-                        element.appendChild(a_marker);
-                        //set id as marker name
-                        a_marker.setAttribute('id', markername);
-                        // set the preset
-                        a_marker.setAttribute('preset', 'custom');
-                        // set the type
-                        a_marker.setAttribute('type', 'pattern');
-                        // set the url
-                        a_marker.setAttribute('url', marker);
+                    if((status === 200) && !(document.getElementById(markername + modelname))){ //if the marker location exists and does not already have the called model
+                        //*** if marker does not already exist, create it. ***
+                        if (document.getElementById(markername) == null) {
+                            //create a new a-marker element
+                            var a_marker = document.createElement("a-marker");
+                            var element = document.getElementById("currentScene");
+                            element.appendChild(a_marker);
+                            //set id as marker name
+                            a_marker.setAttribute('id', markername);
+                            // set the preset
+                            a_marker.setAttribute('preset', 'custom');
+                            // set the type
+                            a_marker.setAttribute('type', 'pattern');
+                            // set the url
+                            a_marker.setAttribute('url', marker);
+                        }
+
+                        //*** set model on marker ***
+                        //load model
+                        var object = modelsource + modelname + ".obj";
+                        var material = modelsource + modelname + ".mtl";
+                        var information = "Loaded model: " + modelname;
+                        document.getElementById('info').innerHTML = information;
+
+                        //create a model entity for the marker
+                        var a_entity = document.createElement("a-entity");
+                        var element = document.getElementById(markername);
+                        element.appendChild(a_entity);
+                        //set id as index
+                        a_entity.setAttribute('id', markername + modelname);
+                        //import empty model
+                        a_entity.setAttribute("obj-model", "obj: url(" + object + "); mtl: url(" + material + ");");
+                        //set the shadow
+                        a_entity.setAttribute("shadow", "receive: false");
+                        //set the position
+                        a_entity.setAttribute("position", "0 1 0");
+                        //set the scale
+                        a_entity.setAttribute("scale", "1");
                     }
-
-                    //*** set model on marker ***
-                    //load model
-                    var object = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Models/" + modelname + ".obj";
-                    var material = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Models/" + modelname + ".mtl";
-                    var information = "Loaded model: " + modelname;
-                    document.getElementById('info').innerHTML = information;
-
-                    //create a model entity for the marker
-                    var a_entity = document.createElement("a-entity");
-                    var element = document.getElementById(markername);
-                    element.appendChild(a_entity);
-                    //set id as index
-                    a_entity.setAttribute('id', markername + modelname);
-                    //import empty model
-                    a_entity.setAttribute("obj-model", "obj: url(" + object + "); mtl: url(" + material + ");");
-                    //set the shadow
-                    a_entity.setAttribute("shadow", "receive: false");
-                    //set the position
-                    a_entity.setAttribute("position", "0 1 0");
-                    //set the scale
-                    a_entity.setAttribute("scale", "1");
                 }
-            }
 
 //~~~~~~~~~~ remove selected model
-            function hideModel() {
-                var markername = document.getElementById("markerInput").value;
-                var modelname = document.getElementById("userInput").value;
-                //define the selected marker
-                var identity = markername + modelname;
-                if(document.getElementById(identity)) {
-                    var element = document.getElementById(identity);
-                    element.parentNode.removeChild(element);
+                function hideModel() {
+                    var markername = document.getElementById("markerInput").value;
+                    var modelname = document.getElementById("userInput").value;
+                    //define the selected marker
+                    var identity = markername + modelname;
+                    if(document.getElementById(identity)) {
+                        var element = document.getElementById(identity);
+                        element.parentNode.removeChild(element);
+                    }
                 }
-            }
 
 //~~~~~~~~~~ clear all models from a marker
-            function clearMarker() {
-                var markername = document.getElementById("markerInput").value;
-                //define the selected marker
-                var i;
-                var currentInstances = document.getElementById(markername).getElementsByTagName('a-entity').length
-                for (i = 0; i < currentInstances; i++){
-                    var identity = document.getElementById(markername).getElementsByTagName('a-entity')[0].id;
-                    var element = document.getElementById(identity);
-                    element.parentNode.removeChild(element);
+                function clearMarker() {
+                    var markername = document.getElementById("markerInput").value;
+                    //define the selected marker
+                    var i;
+                    var currentInstances = document.getElementById(markername).getElementsByTagName('a-entity').length
+                    for (i = 0; i < currentInstances; i++){
+                        var identity = document.getElementById(markername).getElementsByTagName('a-entity')[0].id;
+                        var element = document.getElementById(identity);
+                        element.parentNode.removeChild(element);
+                    }
                 }
-            }
 
 //~~~~~~~~~~ Molecular viewer?? ngl
- /*           var file = "rcsb://1crn";
-            var stage;
-            var represent = "cartoon";
+     /*         var file = "rcsb://1crn";
+                var stage;
+                var represent = "cartoon";
 
-            function changeFile() {
-                file = "rcsb://" + document.getElementById("fileSelect").value;
-                document.getElementById("viewport").innerHTML = '';
-                var stage = new NGL.Stage("viewport");
-                stage.loadFile(file).then(function (o) {
-                    o.addRepresentation(represent);
-                    o.autoView();
-                });
-                //document.getElementById("info").innerHTML = file;
-            }
+                function changeFile() {
+                    file = "rcsb://" + document.getElementById("fileSelect").value;
+                    document.getElementById("viewport").innerHTML = '';
+                    var stage = new NGL.Stage("viewport");
+                    stage.loadFile(file).then(function (o) {
+                        o.addRepresentation(represent);
+                        o.autoView();
+                    });
+                    //document.getElementById("info").innerHTML = file;
+                }
 
-            document.addEventListener("DOMContentLoaded", function () {
-                var stage = new NGL.Stage("viewport");
-                stage.loadFile(file, { defaultRepresentation: true });
-                document.getElementById("info").innerHTML = file;
-            }); */
+                document.addEventListener("DOMContentLoaded", function () {
+                    var stage = new NGL.Stage("viewport");
+                    stage.loadFile(file, { defaultRepresentation: true });
+                    document.getElementById("info").innerHTML = file;
+                }); */
 
-        </script>
+            </script>
 
-        <!-- *************************************************************************************************-->
-        <!-- HTML interaction and setup -->
-        <!-- *************************************************************************************************-->
-        <!-- User Interaction -->
-        <div style='position: fixed; top: 10px; left: 10px; width:100%; text-align: left; z-index: 1;'>
-            <!-- Text input -->
-            Marker: <input type="text" id="markerInput" value="hexP" /> <br />
-            Model : <input type="text" id="userInput" value="dna_chainA" /> <br />
-            <!-- Buttons -->
-            <input onclick="tryme()" type="button" value="import model" id="selectButton"> <br />
-            <input onclick="hideModel()" type="button" value="remove model" id="hideButton"> <br />
-            <input onclick="clearMarker()" type="button" value="clear marker" id="clearButton" /><br />
+            <!-- *************************************************************************************************-->
+            <!-- CSS Style -->
+            <!-- *************************************************************************************************-->
+            <!-- Information and detailed menu -->
+            <style>
+                .collapsible {
+                    background-color: #777;
+                    color: white;
+                    cursor: pointer;
+                    padding: 18px;
+                    width: 100%;
+                    border: none;
+                    text-align: left;
+                    outline: none;
+                    font-size: 15px;
+                    float: right;
+                }
 
-            <script>
+                    .active, .collapsible:hover {
+                        background-color: #555;
+                    }
+
+                    .collapsible:after {
+                        content: '\002B';
+                        color: white;
+                        font-weight: bold;
+                        float: right;
+                        margin-left: 5px;
+                    }
+
+                .active:after {
+                    content: "\2212";
+                }
+
+                .content {
+                    padding: 0 18px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.2s ease-out;
+                    background-color: #f1f1f1;
+                }
+            </style>
+
+            <!-- *************************************************************************************************-->
+            <!-- HTML interaction and setup -->
+            <!-- *************************************************************************************************-->
+            <!-- User Interaction -->
+            <div style='position: fixed; top: 10px; left: 10px; width:50%; text-align: left; z-index: 1;'>
+                <!-- Text input -->
+                Marker: <input type="text" id="markerInput" value="hexP" /> <br />
+                Model : <input type="text" id="userInput" value="dna_chainA" /> <br />
+                <!-- Buttons -->
+                <input onclick="tryme()" type="button" value="import model" id="selectButton"> <br />
+                <input onclick="hideModel()" type="button" value="remove model" id="hideButton"> <br />
+                <input onclick="clearMarker()" type="button" value="clear marker" id="clearButton" /><br />
+
+                <script>
             // recognise text submission via Enter key -> For adding markers
             var pressEnter = document.getElementById("userInput");
             pressEnter.addEventListener("keyup", function (event) {
@@ -149,26 +206,62 @@
                     document.getElementById("selectButton").click();
                 }
             });
+                </script>
+            </div>
+
+            <!-- display information on active model -->
+            <div style='position: fixed; bottom: 10px; left: 10px; width:100%; text-align: left; z-index: 1;'>
+                <a id="info"></a>
+            </div>
+
+            <!-- control scale and rotation
+        <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/hammer.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/controlHammer.js"></script> -->
+            <!-- Default image -->
+            <a-marker id="hexP" preset="custom" type="pattern" url="https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/hexP.patt">
+                <!-- Overlay object -->
+                <a-entity obj-model="obj: url(https://raw.githubusercontent.com/GraceBa/ARvis/master/DNA/dna_chainA.obj); mtl: url(https://raw.githubusercontent.com/GraceBa/ARvis/master/DNA/dna_chainA.mtl);" shadow="receive: false;" position="0 1 0" scale="1" id="hexPdna_chainA"></a-entity>
+            </a-marker>
+
+            <!-- Initiate camera -->
+            <a-entity camera></a-entity>
+        </a-scene>
+
+        <!-- Information and detailed menu -->
+        <div style='position: fixed; top: 10px; right: 0px; width:30%; text-align: left;'>
+            <!--<button class="collapsible">Menu</button>
+     <div class="content"> -->
+            <button class="collapsible">How to</button>
+            <div class="content">
+                <p>Enter existing model.</p>
+            </div>
+
+            <button class="collapsible">change marker source</button>
+            <div class="content">
+                <p>
+                    Source: <input type="text" id="markerSourceInput" value="" /> <br />
+                    <input onclick="setMarkerSource()" type="button" value="set marker source" id="markerSourceButton"> <br />
+                    <input onclick="revert()" type="button" value="revert" id="revertButton"> <br />
+                </p>
+            </div>
+            <!--</div> -->
+            <script>
+                // control the collapsing menu
+                var coll = document.getElementsByClassName("collapsible");
+                var x;
+
+                for (x = 0; x < coll.length; x++) {
+                    coll[x].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+                }
             </script>
         </div>
-
-        <!-- display information on active model -->
-        <div style='position: fixed; bottom: 10px; left: 10px; width:100%; text-align: left; z-index: 1;'>
-            <a id="info"></a>
-        </div>
-
-
-        <!-- control scale and rotation
-    <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/hammer.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/controlHammer.js"></script> -->
-        <!-- Default image -->
-        <a-marker id="hexP" preset="custom" type="pattern" url="https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/hexP.patt">
-            <!-- Overlay object -->
-            <a-entity obj-model="obj: url(https://raw.githubusercontent.com/GraceBa/ARvis/master/DNA/dna_chainA.obj); mtl: url(https://raw.githubusercontent.com/GraceBa/ARvis/master/DNA/dna_chainA.mtl);" shadow="receive: false;" position="0 1 0" scale="1" id="hexPdna_chainA"></a-entity>
-        </a-marker>
-
-        <!-- Initiate camera -->
-        <a-entity camera></a-entity>
-    </a-scene>
-</body>
+    </body>
 </html>
