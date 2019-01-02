@@ -76,8 +76,10 @@
                 var modelname = document.getElementById("userInput").value;
                 //define the selected marker
                 var identity = markername + modelname;
-                var element = document.getElementById(identity);
-                element.parentNode.removeChild(element);
+                if(document.getElementById(identity)) {
+                    var element = document.getElementById(identity);
+                    element.parentNode.removeChild(element);
+                } 
             }
 
 //~~~~~~~~~~ clear all models from a marker
