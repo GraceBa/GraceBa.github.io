@@ -7,7 +7,9 @@
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene id="currentScene" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' foo>
 
+        <!-- *************************************************************************************************-->
         <!-- Custom js events -->
+        <!-- *************************************************************************************************-->
         <script type="text/javascript">
 
 //~~~~~~~~~~ Check for non-existent pattern files
@@ -19,7 +21,7 @@
                     selectModel(this.status, marker);
                 }
                 http.open('HEAD', marker, true);
-                http.send(); 
+                http.send();
                 //selectModel(200,marker)
             }
 
@@ -70,7 +72,7 @@
                 }
             }
 
-//~~~~~~~~~~ remove a model
+//~~~~~~~~~~ remove selected model
             function hideModel() {
                 var markername = document.getElementById("markerInput").value;
                 var modelname = document.getElementById("userInput").value;
@@ -79,7 +81,7 @@
                 if(document.getElementById(identity)) {
                     var element = document.getElementById(identity);
                     element.parentNode.removeChild(element);
-                } 
+                }
             }
 
 //~~~~~~~~~~ clear all models from a marker
@@ -119,6 +121,9 @@
 
         </script>
 
+        <!-- *************************************************************************************************-->
+        <!-- HTML interaction and setup -->
+        <!-- *************************************************************************************************-->
         <!-- User Interaction -->
         <div style='position: fixed; top: 10px; left: 10px; width:100%; text-align: left; z-index: 1;'>
             <!-- Text input -->
@@ -154,9 +159,9 @@
 
 
         <!-- control scale and rotation
-        <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/hammer.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/controlHammer.js"></script> -->
-        <!-- Recognise image -->
+    <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/hammer.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/controlHammer.js"></script> -->
+        <!-- Default image -->
         <a-marker id="hexP" preset="custom" type="pattern" url="https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/hexP.patt">
             <!-- Overlay object -->
             <a-entity obj-model="obj: url(https://raw.githubusercontent.com/GraceBa/ARvis/master/DNA/dna_chainA.obj); mtl: url(https://raw.githubusercontent.com/GraceBa/ARvis/master/DNA/dna_chainA.mtl);" shadow="receive: false;" position="0 1 0" scale="1" id="hexPdna_chainA"></a-entity>
