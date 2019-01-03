@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html>
-    <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/aframe-ar.js"></script>
+    <script src="https://graceba.github.io/MolViewer/aframe.js"></script>
+    <script src="https://graceba.github.io/MolViewer/aframe-ar.js"></script>
     <meta charset="UTF-8">
 
     <body style='margin : 0px; overflow: hidden;'>
@@ -12,11 +12,11 @@
             <!-- *************************************************************************************************-->
             <script type="text/javascript">
 //~~~~~~~~~~ define file sources
-                var markersource = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/";
-                var modelsource = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Models/";
+                var markersource = "https://graceba.github.io/MolViewer/Markers/";
+                var modelsource = "https://graceba.github.io/MolViewer/Models/";
 
                 function revert(){
-                    markersource = "https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/";
+                    markersource = "https://graceba.github.io/MolViewer/Markers/";
                     document.getElementById("markerSourceInput").value = markersource;
                 }
 
@@ -138,13 +138,13 @@
             <!-- *************************************************************************************************-->
             <!-- CSS Style -->
             <!-- *************************************************************************************************-->
-            <!-- Information and detailed menu -->
             <style>
+                /*Collapsible menu style*/
                 .collapsible {
                     background-color: #777;
                     color: white;
                     cursor: pointer;
-                    padding: 18px;
+                    padding: 10px;
                     width: 100%;
                     border: none;
                     text-align: left;
@@ -176,20 +176,59 @@
                     transition: max-height 0.2s ease-out;
                     background-color: #f1f1f1;
                 }
+                .sidebar {
+                    background-color: #777;
+                    color: white;
+                    cursor: pointer;
+                    padding: 10px;
+                    width: 30%;
+                    border: none;
+                    text-align: left;
+                    outline: none;
+                    float: right;
+                    font-size: 15px;
+                    top: 0px;
+                }
+                .active1, .sidebar:hover {
+                    background-color: #555;
+                    width: 100%;
+                }
+
+                .sidebar:after {
+                    content: '\002B';
+                    color: white;
+                    font-weight: bold;
+                    float: right;
+                    margin-left: 5px;
+                }
+
+                .sidecontent {
+                    height: 100%;
+                    width: 100%;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.2s ease-out;
+                    background-color: #f1f1f1;
+                }
+                .active1:after {
+                    content: "\2212";
+                }
             </style>
 
             <!-- *************************************************************************************************-->
             <!-- HTML interaction and setup -->
             <!-- *************************************************************************************************-->
             <!-- User Interaction -->
-            <div style='position: fixed; top: 10px; left: 10px; width:50%; text-align: left; z-index: 1;'>
+            <div style='position: fixed; top: 10px; left: 10px; text-align: left; z-index: 1;'>
                 <!-- Text input -->
-                Marker: <input type="text" id="markerInput" value="hexP" /> <br />
-                Model : <input type="text" id="userInput" value="dna_chainA" /> <br />
+                <div style=" background-color: #777; color: white; padding: 1px; text-align:right;">
+                    Marker: <input type="text" id="markerInput" value="hexP" /> <br />
+                    Model : <input type="text" id="userInput" value="dna_chainA" /> <br />
+                </div>
                 <!-- Buttons -->
-                <input onclick="tryme()" type="button" value="import model" id="selectButton"> <br />
-                <input onclick="hideModel()" type="button" value="remove model" id="hideButton"> <br />
-                <input onclick="clearMarker()" type="button" value="clear marker" id="clearButton" /><br />
+                <input onclick="tryme()" type="button" value="import model" id="selectButton" style="width: 50%;" /> <br />
+                <input onclick="hideModel()" type="button" value="remove model" id="hideButton" style="width: 50%;" /> <br />
+                <input onclick="clearMarker()" type="button" value="clear marker" id="clearButton" style="width: 50%;"/><br />
 
                 <script>
             // recognise text submission via Enter key -> For adding markers
@@ -218,9 +257,9 @@
         <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/hammer.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/controlHammer.js"></script> -->
             <!-- Default image -->
-            <a-marker id="hexP" preset="custom" type="pattern" url="https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/hexP.patt">
+            <a-marker id="hexP" preset="custom" type="pattern" url="https://graceba.github.io/MolViewer/Markers/hexP.patt">
                 <!-- Overlay object -->
-                <a-entity obj-model="obj: url(https://raw.githubusercontent.com/GraceBa/ARvis/master/DNA/dna_chainA.obj); mtl: url(https://raw.githubusercontent.com/GraceBa/ARvis/master/DNA/dna_chainA.mtl);" shadow="receive: false;" position="0 1 0" scale="1" id="hexPdna_chainA"></a-entity>
+                <a-entity obj-model="obj: url(https://graceba.github.io/MolViewer/Models/dna_chainA.obj); mtl: url(https://graceba.github.io/MolViewer/Models/dna_chainA.mtl);" shadow="receive: false;" position="0 1 0" scale="1" id="hexPdna_chainA"></a-entity>
             </a-marker>
 
             <!-- Initiate camera -->
@@ -229,22 +268,22 @@
 
         <!-- Information and detailed menu -->
         <div style='position: fixed; top: 10px; right: 0px; width:30%; text-align: left;'>
-            <!--<button class="collapsible">Menu</button>
-     <div class="content"> -->
-            <button class="collapsible">How to</button>
-            <div class="content">
-                <p>Enter existing model.</p>
-            </div>
+            <button class="sidebar">Menu</button>
+            <div class="sidecontent">
+                <button class="collapsible">How to</button>
+                <div class="content">
+                    <p>Enter existing model.</p>
+                </div>
 
-            <button class="collapsible">change marker source</button>
-            <div class="content">
-                <p>
-                    Source: <input type="text" id="markerSourceInput" value="" /> <br />
-                    <input onclick="setMarkerSource()" type="button" value="set marker source" id="markerSourceButton"> <br />
-                    <input onclick="revert()" type="button" value="revert" id="revertButton"> <br />
-                </p>
+                <button class="collapsible">change marker source</button>
+                <div class="content">
+                    <p>
+                        Source: <input type="text" id="markerSourceInput" value="" /> <br />
+                        <input onclick="setMarkerSource()" type="button" value="set marker source" id="markerSourceButton" style="width: 55%;"> <br />
+                        <input onclick="revert()" type="button" value="revert" id="revertButton" style="width: 55%;"> <br />
+                    </p>
+                </div>
             </div>
-            <!--</div> -->
             <script>
                 // control the collapsing menu
                 var coll = document.getElementsByClassName("collapsible");
@@ -261,6 +300,17 @@
                         }
                     });
                 }
+
+                document.getElementsByClassName("sidebar")[0].addEventListener("click", function () {
+                    this.classList.toggle("active1");
+                    var sidecontent = this.nextElementSibling;
+                    if (sidecontent.style.maxHeight) {
+                        sidecontent.style.maxHeight = null;
+                    } else {
+                        sidecontent.style.maxHeight = "100%";//sidecontent.scrollHeight + "px";
+                    }
+                });
+                
             </script>
         </div>
     </body>
