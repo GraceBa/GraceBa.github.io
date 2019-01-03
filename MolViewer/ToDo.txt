@@ -3,8 +3,11 @@ TO DO:
 create model repository			*
 pull model from source			*
 control scale/position (for model)	*
+	pull from repository?
 change file location for loading	*
-make *nice* menu navigation		*
+make *nice* menu navigation
+	model source with revert	*
+consider final file location		?
 	
 
 done
@@ -17,12 +20,19 @@ done
 /take text input
 /different number of targets	
 /how to specify which target is which?	
-/check if file actually EXISTS			
+/check if file actually EXISTS	
+/make *nice* menu navigation	
+	marker source with revert		
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Would be nice...
 get info to fade after a bit		nah.
 user control scale			*
 make js in separate file		*
+fix menu so it doesn't jump		*
 
 /Press enter when entering text		
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Old marker source:
+https://raw.githubusercontent.com/GraceBa/ARvis/master/MolViewer/Markers/
