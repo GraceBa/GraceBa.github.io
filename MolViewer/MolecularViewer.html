@@ -177,7 +177,7 @@
                     background-color: #f1f1f1;
                 }
                 .sidebar {
-                    background-color: #777;
+                    background-color: #333;
                     color: white;
                     cursor: pointer;
                     padding: 10px;
@@ -190,8 +190,8 @@
                     top: 0px;
                 }
                 .active1, .sidebar:hover {
-                    background-color: #555;
-                    width: 100%;
+                    background-color: #333;
+                    width: 30%;
                 }
 
                 .sidebar:after {
@@ -252,10 +252,7 @@
             <div style='position: fixed; bottom: 10px; left: 10px; width:100%; text-align: left; z-index: 1;'>
                 <a id="info"></a>
             </div>
-
-            <!-- control scale and rotation
-        <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/hammer.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/GraceBa/ARvis/DNA/controlHammer.js"></script> -->
+            
             <!-- Default image -->
             <a-marker id="hexP" preset="custom" type="pattern" url="https://graceba.github.io/MolViewer/Markers/hexP.patt">
                 <!-- Overlay object -->
@@ -307,7 +304,7 @@
                     if (sidecontent.style.maxHeight) {
                         sidecontent.style.maxHeight = null;
                     } else {
-                        sidecontent.style.maxHeight = "100%";//sidecontent.scrollHeight + "px";
+                        sidecontent.style.maxHeight = "100%";
                     }
                 });
                 
