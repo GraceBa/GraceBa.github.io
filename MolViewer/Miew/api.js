@@ -1,9 +1,14 @@
-(function () {
+(function() {
     var viewer = new Miew({
         container: document.getElementsByClassName('miew-container')[0],
         load: '1CRN',
+        settings: {
+            theme: 'light',
+            fps: false,
+            axes: false,
+            bg: {color: 0xffffff, transparent: true},
+        }
     });
-
     if (viewer.init()) {
         viewer.run();
     }
