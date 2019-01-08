@@ -1,13 +1,11 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TO DO:
-create model repository			*
-pull model from source			*
-control scale/position (for model)	*
+control scale/position (for model)			*
 	pull from repository?
-change file location for loading	*
-make *nice* menu navigation
-	model source with revert	*
-consider final file location		?
+change file location for loading			*
+consider final file location				?
+combine functionalities to do either			*
+X create model repository				nah.
 	
 
 done
@@ -22,14 +20,18 @@ done
 /how to specify which target is which?	
 /check if file actually EXISTS	
 /make *nice* menu navigation	
-	marker source with revert		
+	marker source with revert
+	model source with revert			
+/access text input with Miew
+/pull model from source			
+/make it so it doesn't break when there is no mtl file
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Would be nice...
-get info to fade after a bit		nah.
-user control scale			*
-make js in separate file		*
-fix menu so it doesn't jump		*
+get info to fade after a bit				nah.
+user control scale					*
+make js in separate file				*
+fix menu so it doesn't jump				*
 
 /Press enter when entering text		
 
