@@ -83,6 +83,10 @@
                        http.open('HEAD', model, true);
                        http.send();
                    }
+                   else {
+                       var information = "Failed to load marker";
+                       document.getElementById('info').innerHTML = information;
+                   }
                }
 //~~~~~~~~~~ Check for non-existent mtl files
                function trymeMTL(status) {
@@ -95,6 +99,10 @@
                        }
                        http.open('HEAD', material, true);
                        http.send();
+                   }
+                   else {
+                       var information = "Failed to load object";
+                       document.getElementById('info').innerHTML = information;
                    }
                }
 
@@ -129,7 +137,7 @@
                         if(status === 200){
                             material = modelsource + modelname + ".mtl";
                         }
-                        var information = "Loading " + modelname + "on " + markername;
+                        var information = "Loading " + modelname + " on " + markername;
                         document.getElementById('info').innerHTML = information;
 
                         //create a model entity for the marker
@@ -147,6 +155,10 @@
                         //set the scale
                         a_entity.setAttribute("scale", "1");
                     }
+                    else {
+                        var information = "Model load already attempted on this marker.";
+                        document.getElementById('info').innerHTML = information;
+                    }
                 }
 
 //~~~~~~~~~~ remove selected model
@@ -159,7 +171,7 @@
                         var element = document.getElementById(identity);
                         element.parentNode.removeChild(element);
                     }
-                    var information = "Removing " + modelname + "from " + markername;
+                    var information = "Removing " + modelname + " from " + markername;
                     document.getElementById('info').innerHTML = information;
                 }
 
@@ -169,13 +181,19 @@
                     //define the selected marker
                     var i;
                     var currentInstances = document.getElementById(markername).getElementsByTagName('a-entity').length
-                    for (i = 0; i < currentInstances; i++){
-                        var identity = document.getElementById(markername).getElementsByTagName('a-entity')[0].id;
-                        var element = document.getElementById(identity);
-                        element.parentNode.removeChild(element);
+                    if (currentInstances == 0) {
+                        var information = markername + " is not an active marker";
+                        document.getElementById('info').innerHTML = information;
                     }
-                    var information = "Clearing " + markername;
-                    document.getElementById('info').innerHTML = information;
+                    else {
+                        for (i = 0; i < currentInstances; i++) {
+                            var identity = document.getElementById(markername).getElementsByTagName('a-entity')[0].id;
+                            var element = document.getElementById(identity);
+                            element.parentNode.removeChild(element);
+                        }
+                        var information = "Clearing " + markername;
+                        document.getElementById('info').innerHTML = information;
+                    }
                 }
 
 //~~~~~~~~~~ function that creates and loads miew container
@@ -196,7 +214,7 @@
                     viewer.unload();
                     viewer.load(file);
 
-                    var information = "Loading " + file + "in protein viewer";
+                    var information = "Loading " + file + " in protein viewer";
                     document.getElementById('info').innerHTML = information;
                 }
 
