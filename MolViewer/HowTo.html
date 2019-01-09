@@ -49,10 +49,11 @@
             The "Load obj model" tab in the menu defines a marker and a model within a specific directory. <br />
             When "import model" is clicked, the defined model is displayed on the defined marker (unless the file does not exist). <br />
             When "remove model" is clicked, the defined model is removed from the defined marker. <br />
-            When "clear marker" is clicked, all models on the defined marker are removed. <br />
+            When "clear marker" is clicked, all models on the defined marker are removed. 
+            Only one instance of a marker can be used at any one time. <br /> 
         </p>
         <p>
-            The directory from which an object is loaded is defined in <a href="#changingSources">Changing sources</a>.
+            The directory from which an object is loaded is explained in <a href="#changingSources">Changing sources</a>.
         </p>
         <br />
         <br />
@@ -69,32 +70,31 @@
         <img src="https://graceba.github.io/MolViewer/Images/ChangeSourceTab.png" />
         <p>
             The "Change source" tab in the menu allows the user to define a custom location for importing object models and marker patterns.
-            It should be noted that only online directories will be recognised. If a non-existent file is called, the input is ignored.
-        </p>
-        <p>
+            It should be noted that only online directories will be recognised. If a non-existent directory is called, no models will be loaded
+            until a valid address is given.
             The default directory can be restored in each case by clicking "revert".
             <br />
             <br />
         </p>
 
+        <!-- marker file convention -->
         <p><b name="markerFileConvention">Marker file convention</b></p>
         <p>
-            Markers are read by the program from <a href="#creatingMarkers">.patt files</a>. The directory to a file location is defined using the format:<br />
+            Markers are read by the program from .patt files. 
+            .patt files are text files the AR Viewer program interprets in recognising real-world markers.
+            The directory to a file location is defined using the format:<br />
             &emsp; <a style="color: gray;">https://example_directory.com/ Marker .patt</a> <br />
             where "Marker" is the marker defined in <a href="#loadingObjModel">Loading an object model</a>.
             <br />
             <br />
         </p>
-
+        <!-- creating markers -->
         <p><b><a name="creatingMarkers">Creating markers</a></b></p>
         <p>
-            Markers are simple sybols framed by a black square which function as real-world targets to place virtual models on.
-            Users can design their own markers and use <a href="https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html" target="_blank">this site</a>
-            to frame their image and generate a corresponding .patt file. It is recommended that the default frame thickness (50%) is
+            Markers are simple symbols framed by a black square which function as real-world targets to place virtual models on.
+            Users can design their own symbols and use <a href="https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html" target="_blank">this site</a>
+            to generate a marker and corresponding .patt file. It is recommended that the default frame thickness (50%) is
             used to produce reliable markers.
-        </p>
-        <p>
-            .patt files are text files the AR Viewer program interprets in recognising real-world markers.
             <br />
             <br />
         </p>
@@ -104,14 +104,11 @@
             Models are read by the program from .obj files for shape, and .mlt files for colour. The directory to a file location is defined using the format:<br />
             &emsp; <a style="color: gray;">https://example_directory.com/ Model .obj</a> and <br />
             &emsp; <a style="color: gray;">https://example_directory.com/ Model .mtl</a> respectively.<br />
-            Both files are defined by the same "Model" in <a href="#loadingObjModel">Loading an object model</a>.
+            Both files are defined by the same "Model" name in <a href="#loadingObjModel">Loading an object model</a>.
             This requires the files to be located in the same directory with the same name.
         </p>
         <p>
-            Colourless object models may be loaded with non-existent material files.
-            <br />
-            <br />
-        </p>
+            Shape objects may be loaded with non-existent material files, and will be displayed as a solid white object.
         </p>
 
         <br />
