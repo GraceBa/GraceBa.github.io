@@ -24,6 +24,11 @@
             background-color: #777;
             padding: 5px;
         }
+        .mainContent{
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+        }
     </style>
 </head>
 <body>
@@ -31,54 +36,80 @@
         AR Viewer User Guide
     </div>
     <br/>
-    <!-- Loading an object model-->
-    <a name="loadingObjModel"><h>Loading an object (.obj) model</h></a><br />
-    <p>
-        An existing object model can be loaded into the AR viewer through an online depository.<br />
-        An example depository containing a limited range of object files can be found <a href="https://github.com/GraceBa/GraceBa.github.io/tree/master/MolViewer/Models">here</a>.<br />
-    </p>
-    <img src="https://graceba.github.io/MolViewer/Images/LoadObjModelTab.png" />
-    <p>
-        The "Load obj model" tab in the menu defines a marker and a model within a specific directory. <br />
-        When "import model" is clicked, the defined model is displayed on the defined marker (unless the file does not exist). <br />
-        When "remove model" is clicked, the defined model is removed from the defined marker. <br />
-        When "clear marker" is clicked, all models on the defined marker are removed. <br />
+    <div class="mainContent">
+        <!-- Loading an object model-->
+        <a name="loadingObjModel"><h>Loading an object (.obj) model</h></a><br />
+        <hr />
+        <p>
+            An existing object model can be loaded into the AR viewer through an online depository.<br />
+            An example repository containing a limited range of object files can be found <a href="https://github.com/GraceBa/GraceBa.github.io/tree/master/MolViewer/Models">here</a>.<br />
+        </p>
+        <img src="https://graceba.github.io/MolViewer/Images/LoadObjModelTab.png" />
+        <p>
+            The "Load obj model" tab in the menu defines a marker and a model within a specific directory. <br />
+            When "import model" is clicked, the defined model is displayed on the defined marker (unless the file does not exist). <br />
+            When "remove model" is clicked, the defined model is removed from the defined marker. <br />
+            When "clear marker" is clicked, all models on the defined marker are removed. <br />
+        </p>
+        <p>
+            The directory from which an object is loaded is defined in <a href="#changingSources">Changing sources</a>.
+        </p>
         <br />
-        The directory from which an object is loaded is defined in <a href="#changingSources">Changing sources</a>.
-    </p>
+        <br />
 
-    <br />
-    <br />
 
-    <!-- Changing the root directory of objects and markers -->
-    <a name="changingSources"><h>Changing sources</h></a><br />
-    <p>
+        <!-- Changing the root directory of objects and markers -->
+        <a name="changingSources"><h>Changing sources</h></a><br />
+        <hr />
+        <p>
+            For ease of access, only the name of an object or marker is needed in the "Load obj model" tab.
+            A specific naming convention is used to enable this to work. By default, a sample model repository is used.<br />
 
-    </p>
-    <img src="https://graceba.github.io/MolViewer/Images/ChangeSourceTab.png" />
-    <p>
+        </p>
+        <img src="https://graceba.github.io/MolViewer/Images/ChangeSourceTab.png" />
+        <p>
+            The "Change source" tab in the menu allows the user to define a custom location for importing object models and marker patterns.
+            It should be noted that only online directories will be recognised. If a non-existent file is called, the input is ignored.
+        </p>
+        <p><b name="markerFileConvention">Marker file convention</b></p>
+        <p>
+            Markers are read by the program from <a href="#creatingMarkers">.patt files</a>. The directory to a file location is defined using the format:<br />
+            &emsp; <a style="color: gray;">https://example_directory.com/ Model .patt</a> <br />
+            where "Model" is the model defined in <a href="#loadingObjModel">Loading an object model</a>.<br />
+        </p>
+        <p><b><a name="creatingMarkers">Creating markers</a></b></p>
+        <p>
+            Markers are simple sybols framed by a black square which function as real-world targets to place virtual models on.
+            Users can design their own markers and use <a href="https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html" target="_blank">this site</a>
+            to frame their image and generate a corresponding .patt file. It is recommended that the default frame thickness (50%) is 
+            used to produce reliable markers.
+        </p>
+        <p>
+            .patt files are text files the AR Viewer program interprets in recognising real-world markers.
+        </p>
+        <br />
+        <br />
 
-    </p>
+        <!-- Loading protein models-->
+        <a name="loadingProteinModel"><h>Loading a protein model</h></a><br />
+        <hr />
+        <p>
+            This... doesn't work yet.
+        </p>
+        <img src="https://graceba.github.io/MolViewer/Images/LoadProteinModelTab.png" />
+        <p>
+            But feel free to type PDB ID's to see them fixed on the screen!<br />
+            This feature will only function properly on some web browsers such as Chrome and Firefox.
+        </p>
 
-    <br />
-    <br />
-
-    <!-- Loading protein models-->
-    <a name="loadingProteinModel"><h>Loading a protein model</h></a><br />
-    <p>
-        This... doesn't work yet.
-    </p>
-    <img src="https://graceba.github.io/MolViewer/Images/LoadProteinModelTab.png" />
-    <p>
-        But feel free to type PDB ID's to see them fixed on the screen!<br/>
-        This feature will only function properly on some web browsers such as Chrome and Firefox.  
-    </p>
-
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <hr />
+        <hr style="width: 60%;" />
+    </div>
 </body>
 </html>
