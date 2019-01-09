@@ -9,15 +9,33 @@
         p {
             font-size: 16px;
         }
+        .headerbar {
+            position: relative;
+            background-color: #555;
+            top: 0px;
+            width: 100%;
+            padding: 10px;
+            left: 0px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        img {
+            background-color: #777;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
+    <div class="headerbar">
+        AR Viewer User Guide
+    </div>
+    <br/>
     <!-- Loading an object model-->
-    <a name="LoadingObjModel"><h>Loading an object (.obj) model</h></a><br />
+    <a name="loadingObjModel"><h>Loading an object (.obj) model</h></a><br />
     <p>
         An existing object model can be loaded into the AR viewer through an online depository.<br />
         An example depository containing a limited range of object files can be found <a href="https://github.com/GraceBa/GraceBa.github.io/tree/master/MolViewer/Models">here</a>.<br />
-        <br />
     </p>
     <img src="https://graceba.github.io/MolViewer/Images/LoadObjModelTab.png" />
     <p>
@@ -26,19 +44,34 @@
         When "remove model" is clicked, the defined model is removed from the defined marker. <br />
         When "clear marker" is clicked, all models on the defined marker are removed. <br />
         <br />
-        The directory from which an object is loaded is defined in <a href="#changingSources">Changing sources</a>).
+        The directory from which an object is loaded is defined in <a href="#changingSources">Changing sources</a>.
     </p>
+
+    <br />
+    <br />
 
     <!-- Changing the root directory of objects and markers -->
     <a name="changingSources"><h>Changing sources</h></a><br />
     <p>
 
     </p>
+    <img src="https://graceba.github.io/MolViewer/Images/ChangeSourceTab.png" />
+    <p>
+
+    </p>
+
+    <br />
+    <br />
 
     <!-- Loading protein models-->
     <a name="loadingProteinModel"><h>Loading a protein model</h></a><br />
     <p>
-
+        This... doesn't work yet.
+    </p>
+    <img src="https://graceba.github.io/MolViewer/Images/LoadProteinModelTab.png" />
+    <p>
+        But feel free to type PDB ID's to see them fixed on the screen!<br/>
+        This feature will only function properly on some web browsers such as Chrome and Firefox.  
     </p>
 
     <br />
