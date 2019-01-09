@@ -4,6 +4,8 @@
     <script src="https://graceba.github.io/MolViewer/aframe.js"></script>
     <script src="https://graceba.github.io/MolViewer/aframe-ar.js"></script>
 
+    <title>AR Viewer</title>
+
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="https://graceba.github.io/MolViewer/Miew/Miew.min.css">
@@ -32,17 +34,30 @@
                 function revertMarker(){
                     markersource = "https://graceba.github.io/MolViewer/Markers/";
                     document.getElementById("markerSourceInput").value = markersource;
+
+                    var information = "Marker source: " + markersource;
+                    document.getElementById('info').innerHTML = information;
                 }
                 function revertModel() {
                     modelsource = "https://graceba.github.io/MolViewer/Models/";
                     document.getElementById("modelSourceInput").value = modelsource;
+
+                    var information = "Model source " + modelsource;
+                    document.getElementById('info').innerHTML = information;
                 }
 
                 function setMarkerSource() {
                     markersource = document.getElementById("markerSourceInput").value;
+
+
+                    var information = "Marker source: " + markersource;
+                    document.getElementById('info').innerHTML = information;
                 }
                 function setModelSource() {
                     modelsource = document.getElementById("modelSourceInput").value;
+
+                    var information = "Model source: " + modelsource;
+                    document.getElementById('info').innerHTML = information;
                 }
 
 //~~~~~~~~~~ Check for non-existent pattern files
@@ -88,6 +103,7 @@
                     //take user input
                     var modelname = document.getElementById("modelInput").value;     //name of 3D AR model
                     var markername = document.getElementById("markerInput").value;  //name of target image marker
+                    var marker = markersource + markername + ".patt";
 
                     if(!(document.getElementById(markername + modelname))){ //if the marker location exists and does not already have the called model
                         //*** if marker does not already exist, create it. ***
@@ -113,7 +129,7 @@
                         if(status === 200){
                             material = modelsource + modelname + ".mtl";
                         }
-                        var information = "Loaded model: " + modelname;
+                        var information = "Loading " + modelname + "on " + markername;
                         document.getElementById('info').innerHTML = information;
 
                         //create a model entity for the marker
@@ -143,6 +159,8 @@
                         var element = document.getElementById(identity);
                         element.parentNode.removeChild(element);
                     }
+                    var information = "Removing " + modelname + "from " + markername;
+                    document.getElementById('info').innerHTML = information;
                 }
 
 //~~~~~~~~~~ clear all models from a marker
@@ -156,6 +174,8 @@
                         var element = document.getElementById(identity);
                         element.parentNode.removeChild(element);
                     }
+                    var information = "Clearing " + markername;
+                    document.getElementById('info').innerHTML = information;
                 }
 
 //~~~~~~~~~~ function that creates and loads miew container
@@ -175,6 +195,9 @@
                     var file = document.getElementById("fileSelect").value;
                     viewer.unload();
                     viewer.load(file);
+
+                    var information = "Loading " + file + "in protein viewer";
+                    document.getElementById('info').innerHTML = information;
                 }
 
         </script>
