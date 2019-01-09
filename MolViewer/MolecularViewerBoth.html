@@ -1,4 +1,4 @@
-﻿<!doctype HTML>
+<!doctype HTML>
 <html>
 <head>
     <script src="https://graceba.github.io/MolViewer/aframe.js"></script>
@@ -260,6 +260,10 @@
             .active1:after {
                 content: "\2212";
             }
+
+            p {
+                padding: 3px;
+            }
         </style>
 
         <!-- *************************************************************************************************-->
@@ -288,9 +292,14 @@
     <div style='position: fixed; top: 10px; right: 0px; width:30%; text-align: left;'>
         <button class="sidebar">Menu</button>
         <div class="sidecontent">
+
             <button class="collapsible">How to</button>
             <div class="content">
-                <p>Enter existing model.</p>
+                <p>
+                    <a href="https://GraceBa.github.io/MolViewer/HowTo.html#loadingObjModel" target="_blank">Loading an obj model</a><br />
+                    <a href="https://GraceBa.github.io/MolViewer/HowTo.html#changingSources" target="_blank">Changing sources</a><br />
+                    <a href="https://GraceBa.github.io/MolViewer/HowTo.html#loadingProteinModel" target="_blank">Loading a protein model</a><br />
+                </p>
             </div>
 
             <button class="collapsible">Load obj model</button>
@@ -321,6 +330,21 @@
                     });
                 </script>
             </div>
+
+            <button class="collapsible">Change source</button>
+            <div class="content">
+                <p>
+                    Set marker source: <input type="text" id="markerSourceInput" value="" /> <br />
+                    <input onclick="setMarkerSource()" type="button" value="set marker source" id="markerSourceButton" style="width: 55%;"> <br />
+                    <input onclick="revertMarker()" type="button" value="revert" id="revertMarkerButton" style="width: 55%;"> <br />
+
+                    Set obj model source: <input type="text" id="modelSourceInput" value="" /> <br />
+                    <input onclick="setModelSource()" type="button" value="set model source" id="modelSourceButton" style="width: 55%;"> <br />
+                    <input onclick="revertModel()" type="button" value="revert" id="revertModelButton" style="width: 55%;"> <br />
+
+                </p>
+            </div>
+
             <button class="collapsible">Load protein model</button>
             <div class="content">
                 <p>
@@ -335,19 +359,6 @@
                         }
                     });
                 </script>
-            </div>
-            <button class="collapsible">Change source</button>
-            <div class="content">
-                <p>
-                    Set marker source: <input type="text" id="markerSourceInput" value="" /> <br />
-                    <input onclick="setMarkerSource()" type="button" value="set marker source" id="markerSourceButton" style="width: 55%;"> <br />
-                    <input onclick="revertMarker()" type="button" value="revert" id="revertMarkerButton" style="width: 55%;"> <br />
- 
-                    Set obj model source: <input type="text" id="modelSourceInput" value="" /> <br />
-                    <input onclick="setModelSource()" type="button" value="set model source" id="modelSourceButton" style="width: 55%;"> <br />
-                    <input onclick="revertModel()" type="button" value="revert" id="revertModelButton" style="width: 55%;"> <br />
-
-                </p>
             </div>
         </div>
         <script>
