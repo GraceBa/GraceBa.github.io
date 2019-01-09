@@ -244,49 +244,44 @@
                 background-color: #f1f1f1;
             }
 
-            @media(max-width: 650px) {
-                .sidebar {
-                    background-color: #333;
-                    color: white;
-                    cursor: pointer;
-                    padding: 10px;
+            @media(max-width: 650px) { 
+                .menu {
+                    position: fixed;
+                    top: 10px;
+                    right: 0px;
                     width: 95%;
-                    border: none;
                     text-align: left;
-                    outline: none;
-                    float: right;
-                    font-size: 15px;
-                    top: 0px;
                 }
             }
-            @media(min-width: 650px){
-                .sidebar {
-                    background-color: #333;
-                    color: white;
-                    cursor: pointer;
-                    padding: 10px;
+            @media(min-width: 650px) {
+                .menu {
+                    position: fixed;
+                    top: 10px;
+                    right: 0px;
                     width: 30%;
-                    border: none;
                     text-align: left;
-                    outline: none;
-                    float: right;
-                    font-size: 15px;
-                    top: 0px;
                 }
-            }
-            @media(max-width: 650px) {
-                .active1, .sidebar:hover {
-                    background-color: #333;
-                    width: 95%;
-                }
+            } 
+           
+            .sidebar {
+                background-color: #333;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                width: 30%;
+                border: none;
+                text-align: left;
+                outline: none;
+                float: right;
+                font-size: 15px;
+                top: 0px;
             }
 
-            @media(min-width: 650px) {
+
                 .active1, .sidebar:hover {
                     background-color: #333;
                     width: 30%;
                 }
-            }
 
                 .sidebar:after {
                     content: '\002B';
@@ -337,7 +332,7 @@
     <!-- *************************************************************************************************-->
     <!-- Information and detailed menu -->
     <!-- *************************************************************************************************-->
-    <div style='position: fixed; top: 10px; right: 0px; width:30%; text-align: left;'>
+    <div class="menu">
         <button class="sidebar">Menu</button>
         <div class="sidecontent">
 
