@@ -21,7 +21,7 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene id="currentScene" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' foo style="position: sticky;">
+    <a-scene id="currentScene" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' foo>
 
         <!-- *************************************************************************************************-->
         <!-- Custom js events -->
@@ -246,7 +246,7 @@
 
             @media(max-width: 770px) { 
                 .menu {
-                    position: absolute;
+                    position: fixed;
                     top: 10px;
                     right: 0px;
                     width: 95%;
@@ -255,7 +255,7 @@
             }
             @media(min-width: 770px) {
                 .menu {
-                    position: absolute;
+                    position: fixed;
                     top: 10px;
                     right: 0px;
                     width: 30%;
