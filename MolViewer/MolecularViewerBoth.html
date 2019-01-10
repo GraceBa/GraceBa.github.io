@@ -262,7 +262,7 @@
                 background-color: #f1f1f1;
             }
 
-            @media(max-width: 770px) { 
+            @media(max-width: 770px) {
                 .menu {
                     position: fixed;
                     top: 10px;
@@ -271,6 +271,7 @@
                     text-align: left;
                 }
             }
+
             @media(min-width: 770px) {
                 .menu {
                     position: fixed;
@@ -279,8 +280,8 @@
                     width: 30%;
                     text-align: left;
                 }
-            } 
-           
+            }
+
             .sidebar {
                 background-color: #333;
                 color: white;
@@ -331,18 +332,23 @@
         <!-- Display -->
         <!-- *************************************************************************************************-->
         <!-- Default image -->
-        <a-marker id="hexP" preset="custom" type="pattern" url="https://graceba.github.io/MolViewer/Markers/hexP.patt">
+        <!-- <a-marker id="hexP" preset="custom" type="pattern" url="https://graceba.github.io/MolViewer/Markers/hexP.patt">
+        <!-- Overlay object -->
+        <!--  <a-entity obj-model="obj: url(https://graceba.github.io/MolViewer/Models/dna_chainA.obj); mtl: url(https://graceba.github.io/MolViewer/Models/dna_chainA.mtl);" shadow="receive: false;" position="0 1 0" scale="1" id="hexPdna_chainA"></a-entity>
+        </a-marker> -->
+
+        <a-marker id="smileyP" preset="custom" type="pattern" url="https://graceba.github.io/MolViewer/Markers/smileyP.patt">
             <!-- Overlay object -->
-            <a-entity obj-model="obj: url(https://graceba.github.io/MolViewer/Models/dna_chainA.obj); mtl: url(https://graceba.github.io/MolViewer/Models/dna_chainA.mtl);" shadow="receive: false;" position="0 1 0" scale="1" id="hexPdna_chainA"></a-entity>
+            <a-entity geometry="primitive: plane" shadow="receive: false;" position="0 1 0" rotation="0 0 10" scale="1" id="smileyP1crn"></a-entity>
         </a-marker>
 
         <!-- display information on active model -->
-        <div style='position: fixed; bottom: 10px; left: 10px; width:100%; text-align: left; z-index: 4;'>
-            <a id="info"></a>
-        </div>
+            <div style='position: fixed; bottom: 10px; left: 10px; width:100%; text-align: left; z-index: 4;'>
+                <a id="info"></a>
+            </div>
 
-        <!-- Initiate camera -->
-        <a-entity camera></a-entity>
+            <!-- Initiate camera -->
+            <a-entity camera></a-entity>
     </a-scene>
 
     <div class="miew-container" style="width:640px; height:480px" z-index="2"></div>
