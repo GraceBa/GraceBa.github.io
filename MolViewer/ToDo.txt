@@ -6,6 +6,7 @@ change file location for loading			*
 consider final file location				?
 combine functionalities to do either			*
 X create model repository				nah.
+
 	
 
 done
@@ -25,6 +26,7 @@ done
 /access text input with Miew
 /pull model from source			
 /make it so it doesn't break when there is no mtl file
+/make menu actions show up in info			
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Would be nice...
