@@ -1,0 +1,37 @@
+﻿<?php
+    $currentDir = getcwd();
+    $uploadDirectory = "https://bitbucket.csiro.au/users/bar833/repos/ar-viewer/browse";
+
+    $errors = []; // Store all foreseen and unforseen errors here
+
+    $fileName = $_FILES['myfile']['name'];
+    $fileSize = $_FILES['myfile']['size'];
+    $fileTmpName  = $_FILES['myfile']['tmp_name'];
+    $fileType = $_FILES['myfile']['type'];
+    $fileExtension = strtolower(end(explode('.',$fileName)));
+
+    $uploadPath = $currentDir . $uploadDirectory . basename($fileName);
+
+    if (isset($_POST['submit'])) {
+
+        if ($fileSize > 200000000) {
+            $errors[] = "This file is more than 200MB. Sorry, it has to be less than or equal to 200MB";
+        }
+
+        if (empty($errors)) {
+            $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+
+            if ($didUpload) {
+                echo "The file " . basename($fileName) . " has been uploaded";
+            } else {
+                echo "An error occurred somewhere. Try again or contact the admin";
+            }
+        } else {
+            foreach ($errors as $error) {
+                echo $error . "These are the errors" . "\n";
+            }
+        }
+    }
+
+
+?>
