@@ -38,6 +38,11 @@ AFRAME.registerComponent("foo",{
         }); 
       
         hammertime.on("pinch", (ev) => {
+            newmarker = document.getElementById('markerInput').value;
+            this.marker = document.getElementById(newmarker);
+            newmodel = document.getElementById('modelInput').value;
+            model = document.getElementById(newmarker + newmodel);
+            if (!model) { return; }
             if (!this.markerVisible) { return; }
             let initialScale = model.getAttribute("scale")
             let scale = {x:ev.scale, y:ev.scale, z:ev.scale}
