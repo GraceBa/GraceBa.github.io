@@ -5186,8 +5186,8 @@ ARjs.Context = THREEx.ArToolkitContext = function(parameters){
 		// tune the maximum rate of pose detection in the source image
 		maxDetectionRate: 30,
 		// resolution of at which we detect pose in the source image
-		canvasWidth: 240,
-		canvasHeight: 180,
+		canvasWidth: 120,
+		canvasHeight: 19,
 
 		// enable image smoothing or not for canvas copy - default to true
 		// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/imageSmoothingEnabled
