@@ -38,7 +38,6 @@ AFRAME.registerComponent("foo",{
         }); 
       
         hammertime.on("pinch", (ev) => {
-            //document.getElementById("info").innerHTML = "Do the thing!";
             newmarker = document.getElementById('markerInput').value;
             this.marker = document.getElementById(newmarker);
             newmodel = document.getElementById('modelInput').value;
@@ -46,10 +45,9 @@ AFRAME.registerComponent("foo",{
             if (!model) { return; }
             if (!this.markerVisible) { return; }
             var initialScale = model.getAttribute("scale");
+            document.getElementById("info").innerHTML = initialScale;
             let scale = { x: ev.scale, y: ev.scale, z: ev.scale }
             model.setAttribute("scale", initialScale + scale);
-            //document.getElementById("info").innerHTML = "I did the thing!";
-
         });
     },
     tick:function() {
