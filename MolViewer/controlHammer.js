@@ -11,7 +11,7 @@ AFRAME.registerComponent("foo",{
         hammertime.add(pinch); // add it to the Manager instance
       
         hammertime.on('pan', (ev) => {
-            document.getElementById("info").innerHTML = "Does this even work?"
+            document.getElementById("info").innerHTML = "Does this even work?";
             newmarker = document.getElementById('markerInput').value;
             this.marker = document.getElementById(newmarker);
             newmodel = document.getElementById('modelInput').value;
@@ -39,7 +39,7 @@ AFRAME.registerComponent("foo",{
         }); 
       
         hammertime.on("pinch", (ev) => {
-            document.getElementById("info").innerHTML = "Do the thing!"
+            document.getElementById("info").innerHTML = "Do the thing!";
             newmarker = document.getElementById('markerInput').value;
             this.marker = document.getElementById(newmarker);
             newmodel = document.getElementById('modelInput').value;
@@ -49,7 +49,7 @@ AFRAME.registerComponent("foo",{
             //let initialScale = model.getAttribute("scale")
             let scale = {x:ev.scale, y:ev.scale, z:ev.scale}
             model.setAttribute("scale", scale);//initialScale + scale);
-            document.getElementById("info").innerHTML = "I did the thing!"
+            document.getElementById("info").innerHTML = "I did the thing!";
 
         });
     },
