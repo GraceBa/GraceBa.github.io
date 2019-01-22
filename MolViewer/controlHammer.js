@@ -44,10 +44,9 @@ AFRAME.registerComponent("foo",{
             model = document.getElementById(newmarker + newmodel);
             if (!model) { return; }
             if (!this.markerVisible) { return; }
-            var initialScale = model.getAttribute("scale");
-            document.getElementById("info").innerHTML = typeof initialScale;
+            //var initialScale = model.getAttribute("scale");
             let scale = { x: ev.scale, y: ev.scale, z: ev.scale }
-            model.setAttribute("scale", initialScale + scale);
+            model.setAttribute("scale", scale); //initialScale + scale);
         });
     },
     tick:function() {
