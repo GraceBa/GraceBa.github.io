@@ -11,6 +11,7 @@ AFRAME.registerComponent("foo",{
         hammertime.add(pinch); // add it to the Manager instance
       
         hammertime.on('pan', (ev) => {
+            document.getElementById("info").innerHTML = "Does this even work?"
             newmarker = document.getElementById('markerInput').value;
             this.marker = document.getElementById(newmarker);
             newmodel = document.getElementById('modelInput').value;
