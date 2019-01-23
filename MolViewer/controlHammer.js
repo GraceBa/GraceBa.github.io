@@ -44,18 +44,18 @@ AFRAME.registerComponent("foo",{
             model = document.getElementById(newmarker + newmodel);
             if (!model) { return; }
             if (!this.markerVisible) { return; }
-            var scale = model.getAttribute("scale");
+            var newScale = model.getAttribute("scale");
             if (ev.scale > 0) {
                 factor = 0.001;
             }
             else {
                 factor = -0.001;
             }
-            scale.x = scale.x + factor;
-            scale.y = scale.y + factor;
-            scale.z = scale.z + factor;
-            model.setAttribute("scale", scale);
-            document.getElementById('info').innerHTML = scale;
+            newScale.x = newScale.x + factor;
+            newScale.y = newScale.y + factor;
+            newScale.z = newScale.z + factor;
+            model.setAttribute("scale", newScale);
+            document.getElementById('info').innerHTML = newScale;
         });
 
     },
