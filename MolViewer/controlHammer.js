@@ -45,18 +45,16 @@ AFRAME.registerComponent("foo",{
             if (!model) { return; }
             if (!this.markerVisible) { return; }
             var scale = model.getAttribute("scale");
-            let magnitude = { x: ev.scale, y: ev.scale, z: ev.scale }
-            if (magnitude.x > 0) {
-                factor = 1;
+            if (ev.scale > 0) {
+                factor = 0.001;
             }
             else {
-                factor = -1;
+                factor = -0.001;
             }
             scale.x = scale.x + factor;
             scale.y = scale.y + factor;
             scale.z = scale.z + factor;
             model.setAttribute("scale", scale);
-            
         });
 
     },
