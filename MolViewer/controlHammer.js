@@ -55,6 +55,7 @@ AFRAME.registerComponent("foo",{
             scale.y = scale.y + factor;
             scale.z = scale.z + factor;
             model.setAttribute("scale", scale);
+            document.getElementById('info').innerHTML = scale;
         });
 
     },
