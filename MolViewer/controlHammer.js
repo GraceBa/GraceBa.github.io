@@ -44,11 +44,17 @@ AFRAME.registerComponent("foo",{
             model = document.getElementById(newmarker + newmodel);
             if (!model) { return; }
             if (!this.markerVisible) { return; }
-            var initialScale = model.getAttribute("scale");
-            let scale = { x: ev.scale, y: ev.scale, z: ev.scale }
-            scale.x = scale.x + initialScale.x;
-            scale.y = scale.y + initialScale.y;
-            scale.z = scale.z + initialScale.z;
+            var scale = model.getAttribute("scale");
+            let magnitude = { x: ev.scale, y: ev.scale, z: ev.scale }
+            if (magnitude.x > 0) {
+                factor = 1;
+            }
+            else {
+                factor = -1;
+            }
+            scale.x = scale.x + factor;
+            scale.y = scale.y + factor;
+            scale.z = scale.z + factor;
             model.setAttribute("scale", scale);
             
         });
