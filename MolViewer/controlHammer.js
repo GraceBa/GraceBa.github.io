@@ -45,9 +45,12 @@ AFRAME.registerComponent("foo",{
             if (!model) { return; }
             if (!this.markerVisible) { return; }
             //var initialScale = model.getAttribute("scale");
-            let scale = { x: ev.scale, y: ev.scale, z: ev.scale }
-            model.setAttribute("scale", scale); //initialScale + scale);
+            //let scale = { x: ev.scale, y: ev.scale, z: ev.scale }
+            //model.setAttribute("scale", scale); //initialScale + scale);
+            var scale = model.getAttribute('scale');
+            console.log(scale);
         });
+
     },
     tick:function() {
         if (this.marker && this.marker.object3D.visible == true) {
