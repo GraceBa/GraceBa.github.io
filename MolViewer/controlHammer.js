@@ -47,8 +47,8 @@ AFRAME.registerComponent("foo",{
             //var initialScale = model.getAttribute("scale");
             //let scale = { x: ev.scale, y: ev.scale, z: ev.scale }
             //model.setAttribute("scale", scale); //initialScale + scale);
-            var scale = model.getAttribute('scale');
-            document.getElementById('info').innerHTML = scale;
+            var scal = model.getAttribute('scale');
+            document.getElementById('info').innerHTML = scal.x.toString();
         });
 
     },
