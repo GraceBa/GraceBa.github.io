@@ -11,6 +11,11 @@ AFRAME.registerComponent("foo",{
         hammertime.add(pinch); // add it to the Manager instance
       
         hammertime.on('pan', (ev) => {
+          /*  console.log(ev.scale);
+            var newScale = model.getAttribute("scale");
+            console.log(newScale);
+            document.getElementById('info').innerHTML = ev.scale;*/
+
             newmarker = document.getElementById('markerInput').value;
             this.marker = document.getElementById(newmarker);
             newmodel = document.getElementById('modelInput').value;
@@ -38,24 +43,30 @@ AFRAME.registerComponent("foo",{
         }); 
       
         hammertime.on("pinch", (ev) => {
+            //document.getElementById('info').innerHTML = ev.scale;
             newmarker = document.getElementById('markerInput').value;
             this.marker = document.getElementById(newmarker);
             newmodel = document.getElementById('modelInput').value;
             model = document.getElementById(newmarker + newmodel);
             if (!model) { return; }
             if (!this.markerVisible) { return; }
-            var newScale = model.getAttribute("scale");
-            if (ev.scale > 0) {
-                factor = 0.001;
+            //this bases the new position off the current
+            var limit = 1;
+            var factor = 0.2
+            let originalScale = model.getAttribute('scale');
+            if ((ev.scale - limit) * factor + originalScale.x <= 0) {
+                ev.scale = limit;
             }
-            else {
-                factor = -0.001;
+            if ((ev.scale - limit) * factor + originalScale.x >= 10) {
+                ev.scale = limit;
             }
-            newScale.x = newScale.x + factor;
-            newScale.y = newScale.y + factor;
-            newScale.z = newScale.z + factor;
-            model.setAttribute("scale", newScale);
-            document.getElementById('info').innerHTML = newScale.x;
+            let scale = { x: (ev.scale - limit) * factor + originalScale.x, y: (ev.scale - limit) * factor + originalScale.y, z: (ev.scale - limit) * factor + originalScale.z };
+            model.setAttribute("scale", scale);
+            //alternatively, this scales absolutely
+            /*
+            let scale = { x: ev.scale, y: ev.scale, z: ev.scale }
+            model.setAttribute("scale", scale); 
+            */
         });
 
     },
