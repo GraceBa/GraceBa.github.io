@@ -15,12 +15,10 @@ AFRAME.registerComponent("foo",{
             var newScale = model.getAttribute("scale");
             console.log(newScale);
             document.getElementById('info').innerHTML = ev.scale;*/
-            if (!document.getElementById('sync').checked) {
-                newmarker = document.getElementById('markerInput').value;
-                this.marker = document.getElementById(newmarker);
-                newmodel = document.getElementById('modelInput').value;
-                model = document.getElementById(newmarker + newmodel);
-            }
+            newmarker = document.getElementById('markerInput').value;
+            this.marker = document.getElementById(newmarker);
+            newmodel = document.getElementById('modelInput').value;
+            model = document.getElementById(newmarker + newmodel);
             if (!model) { return;}
             if (!this.markerVisible) { return;}
             let rotation = model.getAttribute("rotation")
