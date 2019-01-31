@@ -39,31 +39,35 @@
     <br/>
     <div class="mainContent">
         <!-- Loading an object model-->
-        <a name="loadingObjModel"><h>Loading an object (.obj) model</h></a><br />
+        <a name="loadingModel"><h>Loading a model</h></a><br />
         <hr />
         <p>
-            An existing object model can be loaded into the AR viewer through an online depository.<br />
-            An example repository containing a limited range of object files can be found <a href="https://github.com/GraceBa/GraceBa.github.io/tree/master/MolViewer/Models" target="_blank">here</a>.<br />
+            An existing (obj or glTF) model can be loaded into the AR viewer through an online depository.<br />
+            An example repository containing a limited range of files can be found <a href="https://github.com/GraceBa/GraceBa.github.io/tree/master/MolViewer/Models" target="_blank">here</a>.<br />
         </p>
-        <img src="https://graceba.github.io/MolViewer/Images/LoadObjModelTab.png" />
+        <img src="https://graceba.github.io/MolViewer/Images/LoadModelTab.png" />
         <p>
-            The "Load obj model" tab in the menu defines a marker and a model within a specific directory. <br />
+            The "Load model" tab in the menu defines a marker and a model within a specific directory. <br />
             When "import model" is clicked, the defined model is displayed on the defined marker (unless the file does not exist). <br />
             When "remove model" is clicked, the defined model is removed from the defined marker. <br />
             When "clear marker" is clicked, all models on the defined marker are removed. 
             Only one instance of a marker can be used at any one time. <br /> 
         </p>
         <p>
-            The directory from which an object is loaded is explained in <a href="#changingSources">Changing sources</a>.
+            The directory from which a model is loaded is explained in <a href="#changingSources">Changing sources</a>.
         </p>
         <p>
-            The height of an object over a marker can be specified using a numerical value. Entering a single number
-            will offset the height, and entering three numbers separated by spaces (eg "1 2 3"). This will apply to the 
-            model specified in the text fields.
+            The scale of a model can be specified using a numerical value. Entering a single number
+            will proportionately scale the model, and entering three numbers separated by spaces (eg "1 2 3")
+            will scale x, y, and z independently.
         </p>
         <p>
-            The selected model can be manipulated using the mouse, touch screen or controller buttons in the menu. The reset button will return all models on 
+            Selected models can be manipulated using the mouse, touch screen or controller buttons in the menu. The reset button will return all models on 
             the selected marker to their original position, orientation and scale on the marker.
+        </p>
+        <p>
+            Only models specified in the text boxes can be manipulated. If the checkbox is ticked, all models on the defined
+            marker are affected by manipulations. If it is unchecked, only the specified model is affected.
         </p>
         <br />
         <br />
@@ -73,16 +77,20 @@
         <a name="changingSources"><h>Changing sources</h></a><br />
         <hr />
         <p>
-            For ease of access, only the name of an object or marker is needed in the "Load obj model" tab.
+            For ease of access, only the name of a model or marker is needed in the "Load model" tab.
             A specific naming convention is used to enable this to work. By default, a sample model repository is used.<br />
 
         </p>
         <img src="https://graceba.github.io/MolViewer/Images/ChangeSourceTab.png" />
         <p>
-            The "Change source" tab in the menu allows the user to define a custom location for importing object models and marker patterns.
-            It should be noted that only online directories will be recognised. If a non-existent directory is called, no models will be loaded
+            The "Change source" tab in the menu allows the user to define a custom location for importing marker patterns and obj or gltf models.
+            It should be noted that only online directories will be recognised. If a non-existent directory is called, no model will be loaded
             until a valid address is given.
             The default directory can be restored in each case by clicking "revert".
+        </p>
+        <p>
+            The viewer is capable of loading .obj and .gltf models. By clicking the corresponding file type button,
+            the viewer will switch to load that model type. By default the viewer will load .obj files.
             <br />
             <br />
         </p>
@@ -94,7 +102,7 @@
             .patt files are text files the AR Viewer program interprets in recognising real-world markers.
             The directory to a file location is defined using the format:<br />
             &emsp; <a style="color: gray;">https://example_directory.com/ Marker .patt</a> <br />
-            where "Marker" is the marker defined in <a href="#loadingObjModel">Loading an object model</a>.
+            where "Marker" is the marker defined in <a href="#loadingModel">Loading a model</a>.
             <br />
             <br />
         </p>
@@ -104,21 +112,23 @@
             Markers are simple symbols framed by a black square which function as real-world targets to place virtual models on.
             Users can design their own symbols and use <a href="https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html" target="_blank">this site</a>
             to generate a marker and corresponding .patt file. It is recommended that the default frame thickness (50%) is
-            used to produce reliable markers.
+            used to produce reliable markers. Alternatively, several example markers with their pattern files are available <a href="https://github.com/GraceBa/GraceBa.github.io/tree/master/MolViewer/Markers" target="_blank">here</a>.
             <br />
             <br />
         </p>
 
         <p><b name="modelFileConvention">Model file convention</b>
         <p>
-            Models are read by the program from .obj files for shape, and .mlt files for colour. The directory to a file location is defined using the format:<br />
+            Object models are read by the program from .obj files for shape, and .mtl files for colour.
+            The directory to a file location is defined using the format:<br />
             &emsp; <a style="color: gray;">https://example_directory.com/ Model .obj</a> and <br />
             &emsp; <a style="color: gray;">https://example_directory.com/ Model .mtl</a> respectively.<br />
-            Both files are defined by the same "Model" name in <a href="#loadingObjModel">Loading an object model</a>.
-            This requires the files to be located in the same directory with the same name.
+            Both files are defined by the same "Model" name in <a href="#loadingModel">Loading a model</a>.
+            This requires the files to be located in the same directory with the same name. Objects loaded 
+            without material files will be displayed monochromatically.
         </p>
         <p>
-            Objects loaded without material files will be displayed monochromatically.
+            Any files supplementing .gltf files should be located relatively as defined within them.
         </p>
 
         <br />
