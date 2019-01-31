@@ -1,4 +1,4 @@
-AFRAME.registerComponent("foo",{
+AFRAME.registerComponent("manip",{
     init:function() {
         var element = document.querySelector('body');
         var markername = document.getElementById('markerInput').value;
