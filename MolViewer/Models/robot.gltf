@@ -4747,7 +4747,7 @@
   "buffers": [
     {
       "byteLength": 816000,
-      "uri": "drone.bin"
+      "uri": "robot.bin"
     }
   ],
   "extensionsRequired": [
