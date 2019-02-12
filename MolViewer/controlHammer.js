@@ -90,11 +90,10 @@ AFRAME.registerComponent("manip",{
 
     },
     tick:function() {
-        if (this.marker && this.marker.object3D.visible == true) {
-        this.markerVisible = true
-        //  console.log(this.markerVisible)
+        if (this.marker && this.marker.object3D.visible == true && !document.getElementById('lock').checked) {
+            this.markerVisible = true
         } else {
-        this.markerVisible = false
+            this.markerVisible = false
         }
     }
 });
