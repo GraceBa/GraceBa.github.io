@@ -1,4 +1,4 @@
-﻿<!-- Data61 -- CSIRO 2019 -- Grace Barclay-->
+<!-- Data61 -- CSIRO 2019 -- Grace Barclay-->
 <!doctype HTML>
 <html lang="en">
 <head>
@@ -17,7 +17,7 @@
 
 <body style="margin : 0px; overflow: hidden;">
 
-    <a-scene id="currentScene" embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" manip>
+    <a-scene id="currentScene" embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" style="z-index: 1;" manip>
 
         <!-- *************************************************************************************************-->
         <!-- Custom js events -->
@@ -284,50 +284,61 @@
             }
 
 //~~~~~~~~~~ user-friendly movement (on-screen arrow control)
+            var interval;
+            function mousedown(direction) {
+                interval = setInterval(move, 100, direction);
+            }
+            function mouseup() {
+                clearInterval(interval);
+            }
+
             function move(direction) {
                 var markername = document.getElementById("markerInput").value;
+                currentMarker = document.getElementById(markername);
 
-                var i;
-                var currentInstances = document.getElementById(markername).getElementsByTagName('a-entity').length
-                if (!document.getElementById('sync').checked) {
-                    currentInstances = 1;
-                    var modelname = document.getElementById('modelInput').value;
-                    var model = document.getElementById(markername + modelname);
-                    if (!model) { return; }
-                }
-                for (i = 0; i < currentInstances; i++) {
-                    if (document.getElementById('sync').checked) {
-                        var identity = document.getElementById(markername).getElementsByTagName('a-entity')[i].id;
-                        var model = document.getElementById(identity);
+                if (currentMarker.object3D.visible == true) {
+                    var i;
+                    var currentInstances = document.getElementById(markername).getElementsByTagName('a-entity').length
+                    if (!document.getElementById('sync').checked) {
+                        currentInstances = 1;
+                        var modelname = document.getElementById('modelInput').value;
+                        var model = document.getElementById(markername + modelname);
+                        if (!model) { return; }
                     }
-                    var pos = model.getAttribute('position');
-                    var scal = model.getAttribute('scale');
-                    if (direction == "grow") {
-                        scal = { x: scal.x*1.1, y: scal.y*1.1, z: scal.z*1.1 };
+                    for (i = 0; i < currentInstances; i++) {
+                        if (document.getElementById('sync').checked) {
+                            var identity = document.getElementById(markername).getElementsByTagName('a-entity')[i].id;
+                            var model = document.getElementById(identity);
+                        }
+                        var pos = model.getAttribute('position');
+                        var scal = model.getAttribute('scale');
+                        if (direction == "grow") {
+                            scal = { x: scal.x * 1.1, y: scal.y * 1.1, z: scal.z * 1.1 };
+                        }
+                        else if (direction == "shrink") {
+                            scal = { x: scal.x * 0.9, y: scal.y * 0.9, z: scal.z * 0.9 };
+                        }
+                        else if (direction == "up") {
+                            pos.z = pos.z - 0.2;
+                        }
+                        else if (direction == "down") {
+                            pos.z = pos.z + 0.2;
+                        }
+                        else if (direction == "left") {
+                            pos.x = pos.x - 0.2;
+                        }
+                        else if (direction == "right") {
+                            pos.x = pos.x + 0.2;
+                        }
+                        else if (direction == "plus") {
+                            pos.y = pos.y + 0.2;
+                        }
+                        else if (direction == "minus") {
+                            pos.y = pos.y - 0.2;
+                        }
+                        model.setAttribute('position', pos);
+                        model.setAttribute('scale', scal);
                     }
-                    else if (direction == "shrink") {
-                        scal = { x: scal.x*0.9, y: scal.y*0.9, z: scal.z*0.9};
-                    }
-                    else if (direction == "up") {
-                        pos.z = pos.z - 0.2;
-                    }
-                    else if (direction == "down") {
-                        pos.z = pos.z + 0.2;
-                    }
-                    else if (direction == "left") {
-                        pos.x = pos.x - 0.2;
-                    }
-                    else if (direction == "right") {
-                        pos.x = pos.x + 0.2;
-                    }
-                    else if (direction == "plus") {
-                        pos.y = pos.y + 0.2;
-                    }
-                    else if (direction == "minus") {
-                        pos.y = pos.y - 0.2;
-                    }
-                    model.setAttribute('position', pos);
-                    model.setAttribute('scale', scal);
                 }
             }
 
@@ -381,9 +392,10 @@
                 background-color: #f1f1f1;
             }
 
-            @media(max-width: 770px) {
+            @media(max-width: 500px) {
                 .menu {
                     position: fixed;
+                    z-index: 3;
                     top: 10px;
                     right: 0px;
                     width: 95%;
@@ -391,12 +403,13 @@
                 }
             }
 
-            @media(min-width: 770px) {
+            @media(min-width: 500px) {
                 .menu {
                     position: fixed;
+                    z-index: 3;
                     top: 10px;
                     right: 0px;
-                    width: 270px;
+                    width: 295px;
                     text-align: left;
                 }
             }
@@ -430,12 +443,13 @@
                 }
 
             .sidecontent {
-                height: 100%;
                 width: 100%;
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.2s ease-out;
-                background-color: #f1f1f1;
+                /*background-color: #f1f1f1;*/
+                overflow-y: scroll;
+                height: calc(100vh - 10vh);
             }
 
             .active1:after {
@@ -460,10 +474,15 @@
             <a-entity obj-model="obj: url(https://graceba.github.io/MolViewer/Models/dna_chainA.obj); mtl: url(https://graceba.github.io/MolViewer/Models/dna_chainA.mtl);" shadow="receive: false;" position="0 1 0" rotation="0 0 0" scale="1 1 1" id="hexdna_chainA"></a-entity>
             <a-entity obj-model="obj: url(https://graceba.github.io/MolViewer/Models/dna_chainB.obj); mtl: url(https://graceba.github.io/MolViewer/Models/dna_chainB.mtl);" shadow="receive: false;" position="0 1 0" rotation="0 0 0" scale="1 1 1" id="hexdna_chainB"></a-entity>
         </a-marker> <!---->
-        <!-- .glFT
-        <a-marker id="smiley" preset="custom" type="pattern" url="https://graceba.github.io/MolViewer/Markers/smiley.patt">
-            <a-entity gltf-model="scr: url(https://graceba.github.io/MolViewer/Models/drone.gltf)" shadow="receive: false;" position="0 1 0" rotation="0 0 0" scale="0.005 0.005 0.005" id="smileydrone" animation-mixer></a-entity>
+
+        <!--<a-marker id="hex" preset="custom" type="pattern" url="https://graceba.github.io/MolViewer/Markers/hex.patt">
+            <a-entity obj-model="obj: url(https://graceba.github.io/MolViewer/Models/cheeks.obj); mtl: url(https://graceba.github.io/MolViewer/Models/blank.mtl);" shadow="receive: false;" position="0 1 0" rotation="0 0 0" scale="1 1 1" id="hexcheeks"></a-entity>
+            <a-entity obj-model="obj: url(https://graceba.github.io/MolViewer/Models/tongue.obj); mtl: url(https://graceba.github.io/MolViewer/Models/blank.mtl);" shadow="receive: false;" position="0 1 0" rotation="0 0 0" scale="1 1 1" id="hextongue"></a-entity>
         </a-marker> <!---->
+        <!-- .glFT
+    <a-marker id="smiley" preset="custom" type="pattern" url="https://graceba.github.io/MolViewer/Markers/smiley.patt">
+        <a-entity gltf-model="scr: url(https://graceba.github.io/MolViewer/Models/drone.gltf)" shadow="receive: false;" position="0 1 0" rotation="0 0 0" scale="0.005 0.005 0.005" id="smileydrone" animation-mixer></a-entity>
+    </a-marker> <!---->
         <!-- display information onscreen -->
         <div style='position: fixed; bottom: 10px; left: 10px; width:100%; text-align: left; z-index: 4; color: white;'>
             <a id="info"></a>
@@ -481,14 +500,6 @@
         <button class="sidebar">Menu</button>
         <div class="sidecontent">
 
-            <button class="collapsible">How to</button>
-            <div class="content">
-                <p>
-                    <a href="https://GraceBa.github.io/MolViewer/HowTo.html" target="_blank">Loading a model</a><br />
-                    <a href="https://GraceBa.github.io/MolViewer/HowTo.html#changingSources" target="_blank">Changing sources</a><br />
-                </p>
-            </div>
-
             <button class="collapsible">Load model</button>
             <div class="content">
                 <p>
@@ -496,20 +507,21 @@
                     <label style="display: inline-block; width: 55px; padding-bottom: 5px">Model: </label><input type="text" id="modelInput" value="dna_chainA" style="display: inline-block;" /> <br />
                     <!-- Buttons -->
                     <input onclick="trymePATT()" type="button" value="import model" id="selectButton" style="width: 120px;" />
-                    &emsp;  <input class="control" onclick="move('up')" type="button" value="-z" id="upButton" />
-                    <input class="control" onclick="move('grow')" type="button" value="+" id="growButton" style="float: right;" /> <br />
+                    &emsp;  <input class="control" onmousedown="mousedown('up')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-z" id="upButton" />
+                    <input class="control" onmousedown="mousedown('grow')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+" id="growButton" style="float: right;" /> <br />
                     <input onclick="hideModel()" type="button" value="remove model" id="hideButton" style="width: 120px;" />
-                    <input class="control" onclick="move('left')" type="button" value="-x" id="leftButton" />
-                    <input class="control" onclick="move('right')" type="button" value="+x" id="rightButton" />
-                    <input class="control" onclick="move('shrink')" type="button" value="-" id="shrinkButton" style="float: right;" /> <br />
+                    <input class="control" onmousedown="mousedown('left')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-x" id="leftButton" />
+                    <input class="control" onmousedown="mousedown('right')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+x" id="rightButton" />
+                    <input class="control" onmousedown="mousedown('shrink')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-" id="shrinkButton" style="float: right;" /> <br />
                     <input onclick="clearMarker()" type="button" value="clear marker" id="clearButton" style="width: 120px;" />
-                    &emsp;  <input class="control" onclick="move('down')" type="button" value="+z" id="downButton" />
-                    <input type="checkbox" id="sync" checked style="float: right;" /></br>
+                    &emsp;  <input class="control" onmousedown="mousedown('down')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+z" id="downButton" />
+                    <input type="checkbox" id="sync" checked style="float: right;" /><br/>
                     <label style="display: inline-block; padding-top: 5px;">Scale: </label> <input type="text" id="manualOffset" value="" style="width: 35px" />
                     <input onclick="setScale()" type="button" value="set" id="offsetButton" />
-                    <input class="control" onclick="move('minus')" type="button" value="-y" id="minusButton" />
-                    <input class="control" onclick="move('plus')" type="button" value="+y" id="plusButton" /><br />
-                    <label style="display: inline-block; padding-top: 5px">Reset marker orientation:</label> <input onclick="orient()" type="button" value="reset" id="offsetButton" /> <br />
+                    <input class="control" onmousedown="mousedown('minus')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-y" id="minusButton" />
+                    <input class="control" onmousedown="mousedown('plus')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+y" id="plusButton" /><br />
+                    <label style="display: inline-block; padding-top: 5px">Reset marker orientation:</label> <input onclick="orient()" type="button" value="reset" id="offsetButton" />
+                    <input type="checkbox" id="lock" unchecked style="float: right;" /><br/>
                 </p>
                 <script>
                     // recognise text submission via Enter key -> For adding markers
@@ -553,6 +565,15 @@
 
                 </p>
             </div>
+
+            <button class="collapsible">How to</button>
+            <div class="content">
+                <p>
+                    <a href="https://GraceBa.github.io/MolViewer/HowTo.html" target="_blank">Loading a model</a><br />
+                    <a href="https://GraceBa.github.io/MolViewer/HowTo.html#changingSources" target="_blank">Changing sources</a><br />
+                </p>
+            </div>
+        </div>
         </div>
         <script>
                 // control the collapsing menu
@@ -582,7 +603,6 @@
                 });
 
         </script>
-    </div>
 
 </body>
 </html>
