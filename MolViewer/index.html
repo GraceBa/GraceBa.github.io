@@ -507,19 +507,19 @@
                     <label style="display: inline-block; width: 55px; padding-bottom: 5px">Model: </label><input type="text" id="modelInput" value="dna_chainA" style="display: inline-block;" /> <br />
                     <!-- Buttons -->
                     <input onclick="trymePATT()" type="button" value="import model" id="selectButton" style="width: 120px;" />
-                    &emsp;  <input class="control" onmousedown="mousedown('up')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-z" id="upButton" />
-                    <input class="control" onmousedown="mousedown('grow')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+" id="growButton" style="float: right;" /> <br />
+                    &emsp;  <input class="control" onclick="move('up')" onmousedown="mousedown('up')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-z" id="upButton" />
+                    <input class="control" onclick="move('grow')" onmousedown="mousedown('grow')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+" id="growButton" style="float: right;" /> <br />
                     <input onclick="hideModel()" type="button" value="remove model" id="hideButton" style="width: 120px;" />
-                    <input class="control" onmousedown="mousedown('left')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-x" id="leftButton" />
-                    <input class="control" onmousedown="mousedown('right')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+x" id="rightButton" />
-                    <input class="control" onmousedown="mousedown('shrink')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-" id="shrinkButton" style="float: right;" /> <br />
+                    <input class="control" onclick="move('left')" onmousedown="mousedown('left')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-x" id="leftButton" />
+                    <input class="control" onclick="move('right')" onmousedown="mousedown('right')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+x" id="rightButton" />
+                    <input class="control" onclick="move('shrink')" onmousedown="mousedown('shrink')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-" id="shrinkButton" style="float: right;" /> <br />
                     <input onclick="clearMarker()" type="button" value="clear marker" id="clearButton" style="width: 120px;" />
-                    &emsp;  <input class="control" onmousedown="mousedown('down')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+z" id="downButton" />
+                    &emsp;  <input class="control" onclick="move('down')" onmousedown="mousedown('down')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+z" id="downButton" />
                     <input type="checkbox" id="sync" checked style="float: right;" /><br/>
                     <label style="display: inline-block; padding-top: 5px;">Scale: </label> <input type="text" id="manualOffset" value="" style="width: 35px" />
                     <input onclick="setScale()" type="button" value="set" id="offsetButton" />
-                    <input class="control" onmousedown="mousedown('minus')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-y" id="minusButton" />
-                    <input class="control" onmousedown="mousedown('plus')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+y" id="plusButton" /><br />
+                    <input class="control" onclick="move('minus')" onmousedown="mousedown('minus')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="-y" id="minusButton" />
+                    <input class="control" onclick="move('plus')" onmousedown="mousedown('plus')" onmouseup="mouseup()" onmouseout="mouseup()" type="button" value="+y" id="plusButton" /><br />
                     <label style="display: inline-block; padding-top: 5px">Reset marker orientation:</label> <input onclick="orient()" type="button" value="reset" id="offsetButton" />
                     <input type="checkbox" id="lock" unchecked style="float: right;" /><br/>
                 </p>
