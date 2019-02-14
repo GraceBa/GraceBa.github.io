@@ -12,7 +12,7 @@ AFRAME.registerComponent("manip",{
       
         hammertime.on('pan', (ev) => {
             markername = document.getElementById('markerInput').value;
-            this.marker = document.getElementById(markername);
+            if (!this.markerVisible) { return; }
             var i;
 
             var currentInstances = document.getElementById(markername).getElementsByTagName('a-entity').length
@@ -27,7 +27,6 @@ AFRAME.registerComponent("manip",{
                     var identity = document.getElementById(markername).getElementsByTagName('a-entity')[i].id;
                     var model = document.getElementById(identity);
                 }
-                if (!this.markerVisible) { return; }
                 let rotation = model.getAttribute("rotation")
                 switch (ev.direction) {
                     case 2:
@@ -51,7 +50,7 @@ AFRAME.registerComponent("manip",{
       
         hammertime.on("pinch", (ev) => {
             markername = document.getElementById('markerInput').value;
-            this.marker = document.getElementById(markername);
+            if (!this.markerVisible) { return; }
             var i;
 
             var currentInstances = document.getElementById(markername).getElementsByTagName('a-entity').length
@@ -66,8 +65,6 @@ AFRAME.registerComponent("manip",{
                     var identity = document.getElementById(markername).getElementsByTagName('a-entity')[i].id;
                     var model = document.getElementById(identity);
                 }
-
-                if (!this.markerVisible) { return; }
                 //this bases the new position off the current
                 var limit = 1;
                 var factor = 0.2
@@ -89,7 +86,9 @@ AFRAME.registerComponent("manip",{
         });
 
     },
-    tick:function() {
+    tick: function () {
+        markername = document.getElementById('markerInput').value;
+        this.marker = document.getElementById(markername);
         if (this.marker && this.marker.object3D.visible == true && !document.getElementById('lock').checked) {
             this.markerVisible = true
         } else {
