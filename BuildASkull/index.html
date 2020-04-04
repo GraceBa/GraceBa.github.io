@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <!-- By Grace Barclay -->
+  <!--    April 2020    -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Build a Skull</title>
+    <link rel="shortcut icon" href="miniskull.png">
+    <link rel="stylesheet" href="https://graceba.github.io/BuildASkull/TemplateData/style.css">
+    <script src="https://graceba.github.io/BuildASkull/TemplateData/UnityProgress.js"></script>
+    <script src="https://graceba.github.io/BuildASkull/Build/UnityLoader.js"></script>
+	<script src="pagestyle.css"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "https://graceba.github.io/BuildASkull/Build/Downloads.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+	<div class="preamble">
+		<div class="heading">
+			Build a Skull Challenge
+		</div>
+		<a>
+			The challenge is to assemble a complete human skull by recalling and naming
+			all the bones of the skull. Naming a bone in the text bar will show the bone
+			if it was hidden, and hide it if it was visible. The skull is complete when
+			you cannot click on the 'Show All' button.</br>
+
+			<ul>
+			Tips:
+				<li>All teeth are one item named 'teeth'</li>
+				<li>Paired bones need the word left' or 'right' before the name (eg. 'left nasal')</li>
+			</ul>
+
+			Click 'Hide All' to clear the skull and let the challenge begin!
+		</a>
+    </div>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 600px; height: 500px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">Build a Skull</div>
+      </div>
+    </div>
+	<div>
+		Skull model created by Dr. Mariano Coretti (available <a href="https://www.blendernation.com/2018/03/02/high-quality-skull-free-asset-download/">here</a>)
+	</div>
+  </body>
+</html>
