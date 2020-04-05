@@ -6,45 +6,251 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Build a Skull</title>
-    <link rel="shortcut icon" href="miniskull.png">
+    <link rel="shortcut icon" href="https://graceba.github.io/BuildASkull/miniskull.png">
     <link rel="stylesheet" href="https://graceba.github.io/BuildASkull/TemplateData/style.css">
     <script src="https://graceba.github.io/BuildASkull/TemplateData/UnityProgress.js"></script>
     <script src="https://graceba.github.io/BuildASkull/Build/UnityLoader.js"></script>
-	<script src="pagestyle.css"></script>
+	<!--<link style="pagestyle.css">-->
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "https://graceba.github.io/BuildASkull/Build/Downloads.json", {onProgress: UnityProgress});
     </script>
+
+	<style>
+	/*Prematter*/
+		body{background-color:black; color:white;}
+		.preamble{width:60%; margin:30px auto;}
+		a:link{color:#50acff;}
+		a:visited{color:#ff43ad;}
+		a:active{colour:blue;}
+		.information{margin:30px auto 10px auto;}
+		li{margin:0 0 0 20px;}
+	/*Unity web player*/
+		.gamewindow{width:60%; margin: 0 auto;}
+		#unityContainer{padding-top:800%;}
+	/*Information*/
+		.information{width:60%;}
+		.dropdown {
+                background-color: #9a6778;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                margin:0 auto;
+        }
+		.dropdown:after {
+			content: '\002B';
+			color: white;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+
+		.collapsible {
+                background-color: #795174;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                margin:0 auto;
+        }
+
+		.collapsible:hover{
+            background-color: #37152e;
+        }
+		.dropdown:hover {
+			background-color: #552435;
+		}
+
+		.collapsible:after {
+			content: '\002B';
+			color: white;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+
+        .active:after {
+            content: "\2212";
+        }
+
+		.content {
+			padding: 0 -20px 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f1f1f1;
+			color: black;
+			width:100%;
+			margin:0 auto;
+        }
+		p{
+			padding:0 20px;
+		}
+	</style>
+
   </head>
   <body>
+    <!-- Instructions -->
+    <!-- ----------------------------------------------------------------- -->
 	<div class="preamble">
-		<div class="heading">
-			Build a Skull Challenge
-		</div>
+		<h1>Build a 
+		<span style="color:#00ff7d;">S</span><span style="color:red;">k</span><span style="color:#0778ff;">u</span><span style="color:#02cfff;">l</span><span style="color:magenta;">l</span>
+		Challenge</h1>
 		<a>
 			The challenge is to assemble a complete human skull by recalling and naming
 			all the bones of the skull. Naming a bone in the text bar will show the bone
 			if it was hidden, and hide it if it was visible. The skull is complete when
-			you cannot click on the 'Show All' button.</br>
+			you cannot click on the "Show All" button.</br>
 
 			<ul>
 			Tips:
-				<li>All teeth are one item named 'teeth'</li>
-				<li>Paired bones need the word left' or 'right' before the name (eg. 'left nasal')</li>
+				<li>to control teeth, they are grouped as "top teeth" and "bottom teeth"</li>
+				<li>Paired bones require the word "left" or "right" before the name (eg. "left nasal")</li>
+				<li>Check out the information below the window to help you out and learn something new!</li>
 			</ul>
 
-			Click 'Hide All' to clear the skull and let the challenge begin!
+			Click "Hide All" to clear the skull and let the challenge begin!
 		</a>
     </div>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 600px; height: 500px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">Build a Skull</div>
-      </div>
-    </div>
-	<div>
-		Skull model created by Dr. Mariano Coretti (available <a href="https://www.blendernation.com/2018/03/02/high-quality-skull-free-asset-download/">here</a>)
+
+	<!--Embedded Webgl player-->
+	<!-- ----------------------------------------------------------------- -->
+	<div class="gamewindow">
+		<div class="webgl-content">
+		  <div id="unityContainer"></div>
+		  <div class="footer">
+			<div class="webgl-logo"></div>
+			<div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+			<div class="title">Build a Skull</div>
+		  </div>
+		  Skull model created by Dr. Mariano Coretti (available <a href="https://www.blendernation.com/2018/03/02/high-quality-skull-free-asset-download/">here</a>)
+		</div>
 	</div>
+
+	<!-- Information -->
+	<!-- ----------------------------------------------------------------- -->
+	<div class="information">
+		<button class="dropdown">Learn Anatomy</button>
+			<div class="content">
+				<button class="collapsible">Frontal</button>
+					<div class="content">
+						<p>
+							Front of skull
+						</p>
+					</div>
+				<button class="collapsible">Parietal</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Temporal</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Occipital</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Sphenoid</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Zygoma</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Maxilla</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Mandible</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Nasal</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Ethmoid</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Lacrimal</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Palatine</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+				<button class="collapsible">Inferior Nasal Concha</button>
+					<div class="content">
+						<p>
+							
+						</p>
+					</div>
+			</div>
+	</div>
+	<div class="footer">
+	</br></br></br></br></br></br></br>
+	<a href="references.html">References</a>
+	</br></br>
+	</div>
+
+	<script>
+		var menu = document.getElementsByClassName("collapsible");
+		var x;
+        for (x = 0; x < menu.length; x++) {
+            menu[x].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+		document.getElementsByClassName("dropdown")[0].addEventListener("click", function () {
+            this.classList.toggle("active1");
+            var collapse = this.nextElementSibling;
+            if (collapse.style.maxHeight) {
+                collapse.style.maxHeight = null;
+            } else {
+                collapse.style.maxHeight = "100%";
+            }
+        });
+	</script>
+		
+
+
+
   </body>
 </html>
