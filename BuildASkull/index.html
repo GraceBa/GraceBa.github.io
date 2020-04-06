@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Build a Skull</title>
     <link rel="shortcut icon" href="https://graceba.github.io/BuildASkull/miniskull.png">
-    <link rel="stylesheet" href=""https://graceba.github.io/BuildASkull/TemplateData/style.css">
+    <link rel="stylesheet" href="https://graceba.github.io/BuildASkull/TemplateData/style.css">
     <script src="https://graceba.github.io/BuildASkull/TemplateData/UnityProgress.js"></script>
     <script src="https://graceba.github.io/BuildASkull/Build/UnityLoader.js"></script>
 	<!--<link style="pagestyle.css">-->
@@ -20,7 +20,7 @@
 		body{background-color:black; color:white;}
 		.preamble{width:60%; margin:30px auto;}
 		a:link{color:#50acff;}
-		a:visited{color:#ff43ad;}
+		a:visited{color:#a261dd;}
 		a:active{colour:blue;}
 		.information{margin:30px auto 10px auto;}
 		li{margin:0 0 0 20px;}
@@ -29,7 +29,28 @@
 		#unityContainer{padding-top:800%;}
 	/*Information*/
 		.information{width:60%;}
-		.dropdown {
+		.dropdown{
+                background-color: #564656;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                margin:0 auto;
+        }
+		.dropdown:after{
+			content: '\002B';
+			color: white;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+		.dropdown:hover{
+			background-color: #292529;
+		}
+		.topic1,.topic2 {
                 background-color: #9a6778;
                 color: white;
                 cursor: pointer;
@@ -40,12 +61,15 @@
                 outline: none;
                 margin:0 auto;
         }
-		.dropdown:after {
+		.topic1:after,.topic2:after{
 			content: '\002B';
 			color: white;
 			font-weight: bold;
 			float: right;
 			margin-left: 5px;
+		}
+		.topic1:hover,.topic2:hover {
+			background-color: #552435;
 		}
 
 		.collapsible {
@@ -59,14 +83,9 @@
                 outline: none;
                 margin:0 auto;
         }
-
 		.collapsible:hover{
             background-color: #37152e;
         }
-		.dropdown:hover {
-			background-color: #552435;
-		}
-
 		.collapsible:after {
 			content: '\002B';
 			color: white;
@@ -89,7 +108,7 @@
 			width:100%;
 			margin:0 auto;
         }
-		p{
+		.internal{
 			padding:0 20px;
 		}
 	</style>
@@ -127,7 +146,6 @@
 		  <div class="footer">
 			<div class="webgl-logo"></div>
 			<div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-			<div class="title">Build a Skull</div>
 		  </div>
 		  Skull model created by Dr. Mariano Coretti (available <a href="https://www.blendernation.com/2018/03/02/high-quality-skull-free-asset-download/">here</a>)
 		</div>
@@ -136,85 +154,102 @@
 	<!-- Information -->
 	<!-- ----------------------------------------------------------------- -->
 	<div class="information">
+	<p>
+		The skull is composed of 22 bones, 8 bones in the cranial vault, 14 in the face. In addition to these there are 6 auditory ossicles which not present in the model.
+		The cranium is formed by all bones excluding the mandible. In an adult these bones are connected via fibrous sutures and are immobile <a href="references.html#a" target="_blank">[a]</a>.
+	</p>
+
 		<button class="dropdown">Learn Anatomy</button>
 			<div class="content">
-				<button class="collapsible">Frontal</button>
+				<button class="topic1">Cranial vault</button>
 					<div class="content">
-						<p>
-							Front of skull
-						</p>
-					</div>
-				<button class="collapsible">Parietal</button>
-					<div class="content">
-						<p>
+						<button class="collapsible">Frontal</button>
+							<div class="content">
+								<p class="internal">
+									Front of skull
+								</p>
+							</div>
+						<button class="collapsible">Parietal</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Temporal</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Temporal</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Occipital</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Occipital</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Sphenoid</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Sphenoid</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Zygoma</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Ethmoid</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
+								</p>
+							</div>
 					</div>
-				<button class="collapsible">Maxilla</button>
+				<button class="topic2">Face</button>
 					<div class="content">
-						<p>
+						<button class="collapsible">Zygoma</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Mandible</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Maxilla</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Nasal</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Mandible</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Ethmoid</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Nasal</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Lacrimal</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Lacrimal</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Palatine</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Vomer</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
-					</div>
-				<button class="collapsible">Inferior Nasal Concha</button>
-					<div class="content">
-						<p>
+								</p>
+							</div>
+						<button class="collapsible">Palatine</button>
+							<div class="content">
+								<p class="internal">
 							
-						</p>
+								</p>
+							</div>
+						<button class="collapsible">Inferior Nasal Concha</button>
+							<div class="content">
+								<p class="internal">
+							
+								</p>
+							</div>
 					</div>
 			</div>
 	</div>
@@ -239,6 +274,24 @@
             });
         }
 		document.getElementsByClassName("dropdown")[0].addEventListener("click", function () {
+            this.classList.toggle("active1");
+            var collapse = this.nextElementSibling;
+            if (collapse.style.maxHeight) {
+                collapse.style.maxHeight = null;
+            } else {
+                collapse.style.maxHeight = "100%";
+            }
+        });
+		document.getElementsByClassName("topic1")[0].addEventListener("click", function () {
+            this.classList.toggle("active1");
+            var collapse = this.nextElementSibling;
+            if (collapse.style.maxHeight) {
+                collapse.style.maxHeight = null;
+            } else {
+                collapse.style.maxHeight = "100%";
+            }
+        });
+				document.getElementsByClassName("topic2")[0].addEventListener("click", function () {
             this.classList.toggle("active1");
             var collapse = this.nextElementSibling;
             if (collapse.style.maxHeight) {
