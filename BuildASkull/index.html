@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Build a Skull</title>
-    <link rel="shortcut icon" href="https://graceba.github.io/BuildASkull/miniskull.PNG">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/BuildASkull/mini.ico">
     <link rel="stylesheet" href="https://graceba.github.io/BuildASkull/TemplateData/style.css">
     <script src="https://graceba.github.io/BuildASkull/TemplateData/UnityProgress.js"></script>
     <script src="https://graceba.github.io/BuildASkull/Build/UnityLoader.js"></script>
@@ -17,18 +17,19 @@
 
 	<style>
 	/*Prematter*/
-		body{background-color:black; color:white;}
-		.preamble{width:60%; margin:30px auto;}
+		body{background:url(starsBackground.png) repeat;}
+		#wholepage{background-color:black; color:white; width:80%; padding:30px; margin:0 auto;}
+		.preamble{margin:30px auto;}
 		a:link{color:#50acff;}
 		a:visited{color:#a261dd;}
 		a:active{colour:blue;}
 		.information{margin:30px auto 10px auto;}
 		li{margin:0 0 0 20px;}
 	/*Unity web player*/
-		.gamewindow{width:60%; margin: 0 auto;}
-		#unityContainer{padding-top:800%;}
+		.gamewindow{margin: 0 auto; width: 60%}
+		/*#unityContainer{padding:800%;}*/
 	/*Information*/
-		.information{width:60%;}
+		.information{}
 		.dropdown{
                 background-color: #564656;
                 color: white;
@@ -115,6 +116,7 @@
 
   </head>
   <body>
+  <div id="wholepage">
     <!-- Instructions -->
     <!-- ----------------------------------------------------------------- -->
 	<div class="preamble">
@@ -255,8 +257,8 @@
 	</div>
 	<div class="footer">
 	</br></br></br></br></br></br></br>
-	<a href="references.html">References</a>
-	</br></br>
+	<a href="references.html" target="_blank">References</a>
+	</br>
 	</div>
 
 	<script>
@@ -304,6 +306,6 @@
 		
 
 
-
+  </div>
   </body>
 </html>
