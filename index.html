@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <!-- By Grace Barclay -->
+  <!--    April 2020    -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Build a Skull</title>
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/BuildASkull/mini.ico">
+    <link rel="stylesheet" href="https://graceba.github.io/BuildASkull/TemplateData/style.css">
+    <script src="https://graceba.github.io/BuildASkull/TemplateData/UnityProgress.js"></script>
+    <script src="https://graceba.github.io/BuildASkull/Build/UnityLoader.js"></script>
+	<!--<link style="pagestyle.css">-->
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "https://graceba.github.io/BuildASkull/Build/Downloads.json", {onProgress: UnityProgress});
+    </script>
+
+	<style>
+	/*Prematter*/
+		body{
+            background:url(https://graceba.github.io/BuildASkull/starsBackground.png) repeat;
+            text-align:justify;
+        }
+		#wholepage{background-color:black; color:white; width:80%; padding:30px; margin:0 auto;}
+		.preamble{margin:30px auto;}
+		a:link{color:#50acff;}
+		a:visited{color:#a261dd;}
+		a:active{colour:blue;}
+		.information{margin:30px auto 10px auto;}
+		li{margin:0 20px;}
+	/*Unity web player*/
+		.gamewindow{margin: 0 auto; width: 60%;}
+		/*#unityContainer{height:110%;}*/
+	/*Information*/
+		.information{}
+		.dropdown{
+                background-color: #564656;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                margin:0 auto;
+        }
+		.dropdown:after{
+			content: '\002B';
+			color: white;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+		.dropdown:hover{
+			background-color: #292529;
+		}
+		.topic1,.topic2 {
+                background-color: #9a6778;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                margin:0 auto;
+        }
+		.topic1:after,.topic2:after{
+			content: '\002B';
+			color: white;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+		.topic1:hover,.topic2:hover {
+			background-color: #552435;
+		}
+
+		.collapsible {
+                background-color: #795174;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                margin:0 auto;
+        }
+		.collapsible:hover{
+            background-color: #37152e;
+        }
+		.collapsible:after {
+			content: '\002B';
+			color: white;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+
+        .active:after {
+            content: "\2212";
+        }
+
+		.content {
+			padding: 0 -20px 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f1f1f1;
+			color: black;
+			width:100%;
+			margin:0 auto;
+        }
+		p{
+			padding:0 20px;
+		}
+	</style>
+
+  </head>
+  <body>
+  <div id="wholepage">
+    <!-- Instructions -->
+    <!-- ----------------------------------------------------------------- -->
+	<div class="preamble">
+		<h1>Build a 
+		<span style="color:#00ff7d;">S</span><span style="color:red;">k</span><span style="color:#0778ff;">u</span><span style="color:#02cfff;">l</span><span style="color:magenta;">l</span>
+		Challenge</h1>
+		<a href="https://www.youtube.com/watch?v=htw3gxj_D78" target="_blank" style="font-size: 17px;">Watch video tutorial here!</a> </br></br>
+        <a>
+			The challenge is to assemble a complete human skull by recalling and naming
+			all the bones of the skull. Naming a bone in the text bar will show the bone
+			if it was hidden, and hide it if it was visible. The skull is complete when
+			you cannot click on the "Show All" button.</br>
+
+			<ul>
+			Tips:
+                <li>Please note this model will NOT function properly on <u>mobile devices</u>. For the full experience visit this site on a computer.</li>
+				<li>To control teeth, they are grouped as "top teeth" and "bottom teeth".</li>
+				<li>Paired bones require the word "left" or "right" before the name (eg. "left nasal"). Note the 
+                word "bone" should not be added to the name.</li>
+				<li>Check out the INFORMATION BELOW the window to help you out and learn something new!</li>
+			</ul>
+
+			Click "Hide All" to clear the skull and let the challenge begin!
+		</a>
+    </div>
+
+	<!--Embedded Webgl player-->
+	<!-- ----------------------------------------------------------------- -->
+	<div class="gamewindow">
+		<div class="webgl-content">
+		  <div id="unityContainer"></div>
+		  <div class="footer">
+			<div class="webgl-logo"></div>
+			<div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+		  </div>
+		  Skull model created by Dr. Mariano Coretti (available <a href="https://www.blendernation.com/2018/03/02/high-quality-skull-free-asset-download/" target="_blank">here</a>)
+		</div>
+	</div>
+
+	<!-- Information -->
+	<!-- ----------------------------------------------------------------- -->
+	<div class="information">
+        <h1>Information</h1>
+	    <p style="padding: 0;">
+		The skull is composed of <b>28 bones</b>, 8 bones in the cranial vault, 14 in the face and 6 auditory ossicles (which not present in the model).
+		The cranium is formed by the bones of the cranial vault and face, excluding the mandible. In an adult these bones are connected via <b>fibrous sutures</b> 
+        and are immobile <a href="references.html#a" target="_blank">[1]</a>. The upper part of the cranuim, which covers the cranial cavity is the calvaria, and the lower part which includes
+        the floor of the cranial cavity and the facial bones is the viscerocranium <a href="references.html#a" target="_blank">[1]</a>. The internal surface of the brain is divided into <b>three fossae</b> which house the brain. CLICK THE BUTTON BELOW to learn more about each bone. Please note not all structures mentioned are visible in the model.
+	    </p>
+
+		<button class="dropdown">Learn Anatomy</button>
+			<div class="content">
+				<button class="topic1">Cranial vault</button>
+					<div class="content">
+						<button class="collapsible">Frontal</button>
+                        <!-- ----------------------------FRONTAL------------------------------------- -->
+							<div class="content">
+								<p>The frontal bone forms the forehead and the superior, lateral and part of the medial rims of the orbits. </p>
+                                    <ul>
+                                    <li>The superciliary arch forms the superior rim (where the eyebrows are). Medially, this contains the supraorbital notch or foramen <a href="references.html#a" target="_blank">[1]</a>. These are notches in 73.8% of people, and otherwise foramina, and are exits for the supraorbital nerves, which form a part of cranial nerve V <a href="references.html#b" target="_blank">[2]</a>. </li>
+                                    <li>The glabella forms the superior part of the medial rim and the area between the eyebrows.</li>
+                                    <li>The zygomatic process of the frontal bone forms the lateral rim and articulates with the frontal process of the zygomatic bone <a href="references.html#a" target="_blank">[1]</a>.</li> <!--maybe include attachments-->
+                                    </ul>
+                                 <p>
+                                    The frontal bone articulates with the paired parietal bones forming the <b>coronal suture</b> <a href="references.html#a" target="_blank">[1]</a>.
+                                    Along with the ethmoid and sphenoid bones, the frontal bone forms the <b>anterior cranial fossa</b>, which houses the frontal lobes. On the anterior aspect of the internal surface is the frontal crest, which is an attachment point for the <b>falx cerebri</b>. The falx cerebri is formed by the folding of the meningeal layer of the dura mater between the cerebral hemespheres <a href="references.html#a" target="_blank">[1]</a>,<a href="references.html#c" target="_blank">[3]</a>.
+                                    Where this crest terminates, a midline ridge continues along the roof of the cranial cavity, with a medial groove for the <b>superior sagittal sinus</b> <a href="references.html#a" target="_blank">[1]</a>.
+								</p>
+							</div>
+
+                        <button class="collapsible">Ethmoid</button>
+                        <!-- ------------------------------ETHMOID----------------------------------- -->
+							<div class="content">
+								<p>
+							        The ethomoid bone is located inferior to the frontal bone and anterior to the sphenoid. It has a wedge projecting superiourly known as the crista galli, which is another attachment for the falx cerebri. Laterally to this structure is the <b>cribriform plate</b>, which contains many small foramina to allow for the passage of olfactory nerve fibres (collectively the olfactory nerve) between the olfactory bulb and the nasal mucosa lining the nasal cavity <a href="references.html#a" target="_blank">[1]</a>,<a href="references.html#d" target="_blank">[4]</a>,<a href="references.html#e" target="_blank">[5]</a>.
+								</p>
+                                <p>
+         <!--               The foramen cecum is located between the frontal and ethmoid bones which can transmit emissary veins to connect the nasal cavity and superior sagittal sinus <a href="references.html#a" target="_blank">[1]</a>.-->
+                                </p>
+							</div>
+
+						<button class="collapsible">Parietal</button>
+                        <!-- ------------------------------PARIETAL----------------------------------- -->
+							<div class="content">
+								<p>
+							        The paired parietal bones form the roof of the calvaria, covering the brain. They are joined by the fibrous <b>sagittal suture</b>, and are joined to the occipital lobe via the lambdoid suture <a href="references.html#a" target="_blank">[1]</a>.
+                                    The frontal and parietal bones contain granular foveolae on their deep surfaces at the location of <b>arachnoid granulations</b>, which reabsorb cerebrospinal fluid <a href="references.html#a" target="_blank">[1]</a>. Laterally, smaller grooves form at the location of meningeal vessels.
+								</p>
+                                <p>
+                                    In some cases, small bones may  be present, known as sutural or wormian bones. These can be found in other sutures but are most frequent in the lambdoid suture <a href="references.html#h" target="_blank">[6]</a>. Why these bones form is unclear, though it is suggested to be influenced by mechanical, genetic and pathalogical factors <a href="references.html#h" target="_blank">[6]</a>.
+                                </p>
+							</div>
+
+						<button class="collapsible">Temporal</button>
+                        <!-- ----------------------------------TEMPORAL------------------------------- -->
+							<div class="content">
+								<p>
+							        The paired temporal bones are located inferiorly to the parietal bones and have multiple defined subdivisions.</p>
+                                    <ul>
+                                        <li>The squamous part is the flat region that contributes to the lateral part of the cranial cavity. It articulates with the ipsilateral parietal bone at the squamous suture, and the sphenoid bone at the sphenosquamous suture <a href="references.html#a" target="_blank">[1]</a>. </li>
+                                        <li>The zygomatic process projects anteriorly from the inferior region of the squamous part. With the zygomatic bone this process forms the zygomatic arch <a href="references.html#a" target="_blank">[1]</a>.</li>
+                                        <li>Inferiorly, the tympanic part forms the external acoustic opening which leads to the external acoustic meatus <a href="references.html#a" target="_blank">[1]</a>.</li>
+                                        <li>The styloid process projects inferiorly from the lower border of the bone under the acoustic meatus as an attachment point for muscles and ligaments. One example is the stylomandibular ligament of the temporomandibular joint <a href="references.html#f" target="_blank">[7]</a>.</li>
+                                        <li>
+                                            The petromastoid part is further subdivided.
+                                            <ul>
+                                                <li>The mastoid part is the lateral and posterior part which articulates with the parietal and occipital bones forming the parietomastoid and the occipitomastoid
+                                                sutures respectively. These are continous with each other and the squamous suture <a href="references.html#a" target="_blank">[1]</a>. The mastoid process
+                                                projects inferiorly as an attachment site for muscles.</li>
+                                                <li>The petrous part is more medial and cannot be seen from the lateral view <a href="references.html#a" target="_blank">[1]</a>. It is pyramidal and contains the <b>inner ear</b> <a href="references.html#g" target="_blank">[8]</a>,<a href="references.html#f" target="_blank">[7]</a>.  </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                <p>The superior border of the petrous part forms the posterior boundary between the <b>middle and posterior cranial fossae</b>. <!--middle cranial fossa , which houses the temporal lobes, and the posterior cranial fossa, which houses the occipital lobe.
+                                In the middle cranial fossa the petrous part contains the grooves and hiatuses for the greater and lesser petrosal nerves,
+                                which allow the passage of the facial nerve (CN VII) and glossopharyngeal nerve (CN IX) respectively-->
+                                The posterior petrous part contains the <b>internal acoustic meatus</b>, allowing for innervation (including the vestibulocochlear nerve CNVIII),  and blood supply to the inner ear
+                                <a href="references.html#a" target="_blank">[1]</a>. The jugular notches of the temporal and occipital bones form the <b>jugalur foramen</b> which allows for the passage of many structures including cranial nerves IX, X and XI <a href="references.html#a" target="_blank">[1]</a>.
+                                </p>								
+							</div>
+
+                        <button class="collapsible">Sphenoid</button>
+                        <!-- -------------------------------SPHENOID---------------------------------- -->
+							<div class="content">
+								<p> The sphenoid bone is located anteriorly to the temporal bones and posteriorly to the frontal and ethmoid bones. It is an irregular bone with paired greater and lesser wings lateral to the body, and pterygoid processes inferiorly. </p>
+                                    <ul>
+                                        <li> 
+                                            The body of the sphenoid bone is the central part which contains air sinuses separated by a septum <a href="references.html#a" target="_blank">[1]</a>. It articulates with the surrounding vomer, ethmoid, palatine and occipital bones. It contains the <b>sella turcica</b>, a saddle shaped superior prominence that supports the pituitary gland in the hypophysial fossa <a href="references.html#i" target="_blank">[9]</a>.
+                                        </li>
+                                        <li> 
+                                            The pterygoid processes project inferoirly to form narrower medial plates and broader lateral plates separated by the pterygoid fossa. Each medial plate has a hook-like projection inferiorly known as the pterygoid hamulus. A division in the medial plate forms the scaphoid fossa <a href="references.html#a" target="_blank">[1]</a>. 
+                                        </li>
+                                        <li>
+                                            The greater wings form parts of the base and lateral walls of the skull. Inferiorly, each wing contains the <b>foramina rotundum, ovale</b> and spinosum <a href="references.html#a" target="_blank">[1]</a>. The lesser wings, with the body, form the posterior aspect of the anterior cranial fossa.
+                                        </li>
+                                    </ul>
+                                <p>
+                                    The <b>middle cranial fossa</b> is partially formed by the body and greater wings of the sphenoid bone. The medial aspect of the middle cranial fossa is bordered anteriorly by the chiasmatic sulcus of the sphenoid, which runs between the two <b>optic canals</b> <a href="references.html#i" target="_blank">[9]</a>.
+								</p>
+							</div>
+
+						<button class="collapsible">Occipital</button>
+                        <!-- ------------------------------OCCIPITAL----------------------------------- -->
+							<div class="content">
+								<p>The occipital bone forms the posterior and inferior portions of the cranial cavity. The bone is composed of four parts surrounding the <b>foramen magnum</b>, which allows the passage of many structures and divides the continuous structures of the brainstem and spinal cord <a href="references.html#a" target="_blank">[1]</a>.</p>
+                                    <ul>
+							            <li>The squamous (posterior) part articulates with the parietal lobes forming the lambdoid suture. Medially and inferiorly is the external occipital protuberance in the midline. This continues inferiorly to a prominant point called the inion <!--before extending downward into the external occipital crest <!--Running laterally to this are the superior and inferior nuchal lines.--> <a href="references.html#a" target="_blank">[1]</a>.</li> 
+                                        <li>The basilar part of the occipital bone is located posterior to the sphenoid bone, medial to the temporal bones and anterior to the foramen magnum  <a href="references.html#a" target="_blank">[1]</a>.</li>
+                                        <li>The two lateral parts are located laterally to the foramen magnum.</li>
+                                    </ul>
+                                <p>
+                                    The outside anteriolateral borders of the foramen magnum have rounded <b>occipital condyles</b> which articulate with the atlas (CI vertebra) <a href="references.html#a" target="_blank">[1]</a>. Posterior to these are the condylar fossae containing condylar canals. Superior to the condyles are the <b>hypoglossal canals</b> <a href="references.html#a" target="_blank">[1]</a>.
+                                </p>
+                                <p>
+                                    Internally, the occipital bone forms the majority of the posterior cranial fossa. The squamous part has the internal occipital crest which separates the two cerebellar hemispheres. <!--Superiorly the internal occipital crest ends forming the internal occipital protuberance. Lateral to this structure--> Grooves for the <b>transverse sinuses</b> run laterally then inferiorly toward the jugular foramina <a href="references.html#a" target="_blank">[1]</a>. 
+                                <!--</p>
+                                <p>-->
+                                    Anterior to the foramen magnum is the clivus, a sloping depression that joins to <!--the dorsum sellae,--> the posterior wall of the sella turcica <a href="references.html#a" target="_blank">[1]</a>, <a href="references.html#i" target="_blank">[9]</a>. 
+                                </p>
+							</div>
+						
+					</div>
+
+
+
+
+				<button class="topic2">Face</button>
+					<div class="content">
+						<button class="collapsible">Zygoma</button>
+                        <!-- -------------------------ZYGOMA---------------------------------------- -->
+							<div class="content">
+								<p>
+							        The paired zygomatic bones, or cheekbones, form the lower lateral rim of the orbit. The shape of the bone protects the contents of the orbit and causes definition of the face <a href="references.html#k" target="_blank">[10]</a>. The temporal process of the zygoma joins with the temporal bone to form the <b>zygomatic arch</b>. This acts as a site for muscle attachement for the masseter muscle. The tendon of the temporalis muscle passes through deep to the zygomatic arch <a href="references.html#j" target="_blank">[11]</a>. These both contribute to movement of the jaw.
+								</p>
+                                <p>
+                                    The zygomatic nerve, a subdivision of the trigeminal nerve, gives off the zygomaticotemporal (superior) and zygomaticofacial (inferior) branches. Each of these pass through a foramen of the same name in the zygoma <a href="references.html#k" target="_blank">[10]</a>.
+                                </p>
+							</div>
+
+						<button class="collapsible">Maxilla</button>
+                        <!-- ---------------------------------MAXILLA-------------------------------- -->
+							<div class="content">
+								<p>
+							        The paired maxillae are joined by the intermaxillary suture <a href="references.html#m" target="_blank">[12]</a>. They form the upper jaw, along with the inferior and medial rims of the orbit <a href="references.html#a" target="_blank">[1]</a>. The frontal and zygomatic processes of the maxillae articulate with the frontal and zygomatic bones, respectively. The body of the maxilla is located laterally to the opening of the <b>nasal cavity</b>. The anterior aspect of each body has the infra-orbital foramen <a href="references.html#a" target="_blank">[1]</a>. 
+								</p>
+                                <p>
+                                    The <b>alveolar process</b> of each maxilla contains the teeth of the upper jaw. The bone forms around erupting teeth and periodontal ligaments, growing with and following the movement of the teeth <a href="references.html#l" target="_blank">[13]</a>.
+                                </p>
+							</div>
+						<button class="collapsible">Mandible</button>
+                        <!-- -------------------------------MANDIBLE---------------------------------- -->
+							<div class="content">
+								<p>
+							        The mandible forms the lower jaw. The anterior portion is the body and the posterior portion on each side has the ramus of the mandible, joined by the <b>angle</b> of the mandible <a href="references.html#a" target="_blank">[1]</a>.
+                                    The body is further divided into two parts.
+								</p>
+                                <ul>
+                                    <li>The base of the mandible has the anterior mental protuberance medially (along the sagittal plane). Laterally to this are the <!--mental tubercles (along the transverse plane), then the--> mental foramina, then the oblique line, which is a ridge for muscle attachement and is continuous with the anterior border of the mandibular ramus <a href="references.html#a" target="_blank">[1]</a>, <a href="references.html#u" target="_blank">[14]</a>.</li>
+                                    <li> The alveolar part of the mandible contains the teeth of the lower jaw. <!--It is resorbed when teeth are removed. The alveolar part of the mandible--> It has a bone turnover rate twice that of the maxilla, and has the fastest turnover rate of the whole skeleton <a href="references.html#l" target="_blank">[13]</a>.</li>
+                                </ul>
+                                <p>
+                                    Each posterior ramus of the mandible has two superior processes.
+                                </p>
+                                <ul>
+                                    <li>The <b>condylar process</b> is the more posterior process which articulates with the temporal bone.</li>
+                                    <li>The coronoid process is the attachment point for the temporalis muscle <a href="references.html#a" target="_blank">[1]</a>.</li>
+                                </ul>
+							</div>
+
+						<button class="collapsible">Nasal</button>
+                        <!-- ---------------------------------NASAL-------------------------------- -->
+							<div class="content">
+								<p>
+							        The paired nasal bones articulate with each other in the midline, the frontal bone superiorly and the frontal processes of the maxillae laterally <a href="references.html#a" target="_blank">[1]</a>. 
+								</p>
+                                <p>
+                                    The nasal bones form the superior border of the piriform aperture which is an important structure for nasal airflow <!--that controls airflow resistance --><a href="references.html#n" target="_blank">[15]</a>.
+                                </p>
+							</div>
+						<button class="collapsible">Lacrimal</button>
+                        <!-- ------------------------------LACRIMAL----------------------------------- -->
+							<div class="content">
+								<p>
+							        The paired lacrimal bones form most of the anteromedial wall of the orbits, and are the smallest bones of the skull (excluding the auditory ossicles). Its name comes from the Latin 'lacrima,' meaning <b>tear</b>, which relates to its proximity to and suport of parts of the lacrimal apparatus <a href="references.html#o" target="_blank">[16]</a>. It is also the origin of the <b>orbicularis oculi muscle</b> on its lateral (orbital) surface <a href="references.html#o" target="_blank">[16]</a>.
+								</p>
+							</div>
+
+						<button class="collapsible">Vomer</button>
+                        <!-- ---------------------------------VOMER-------------------------------- -->
+							<div class="content">
+								<p>
+							        The vomer is a thin bone in the median plane which sits inferiorly to the sphenoid and ethmoid bones. It has a downward sloping anterior border which joins with the ethmoid bone and the cartilage of the nasal septum <a href="references.html#p" target="_blank">[17]</a>. Inferiorly the vomer articulates with the two maxillae and palatine bones <a href="references.html#p" target="_blank">[17]</a>.
+								</p>
+                                <p>
+                                    The vomer and ethmoid form the bony nasal septum which separates the nasal cavity into two nasal fossae <a href="references.html#q" target="_blank">[18]</a>.
+                                </p>
+							</div>
+
+						<button class="collapsible">Palatine</button>
+                        <!-- --------------------------PALATINE--------------------------------------- -->
+							<div class="content">
+								<p>The paired palatine bones are located posteriorly to the sphenoid bone and consist of the horizontal and perpendicular plates.</p>
+                                <ul>
+                                    <li>The horizontal plate contributes to the posterior portion of the palate and the floor of the nasal cavity <a href="references.html#r" target="_blank">[19]</a>. This contains the greater palatine foramen which allows the greater palatine nerve to enter the oral cavity. The lesser palatine foramen or foramina are small openings in the <b>hard palate</b> (horizontal plate) <a href="references.html#r" target="_blank">[19]</a>.</li>
+                                    <li>The perpendicular plate forms the medial wall of the maxillary sinus <a href="references.html#r" target="_blank">[19]</a>.</li>
+                                </ul>            
+							</div>
+
+						<button class="collapsible">Inferior Nasal Concha</button>
+                        <!-- ---------------------------INFERIOR NASAL CONCHA-------------------------------------- -->
+							<div class="content">
+								<p>
+							        The paired inferior nasal conchae articulate with the maxilla anteriorly, lacrimal and ethmoid anteromedially, and the palatine bones posteromedially <a href="references.html#s" target="_blank">[20]</a>. The middle and superior nasal conchae are part of the ethmoid bone <a href="references.html#s" target="_blank">[20]</a>. These <b>chonchae</b> act to increase the surface area of the nasal cavity, causing slowed and turbulent airflow and increasing the amount of air that comes into contact with the walls <a href="references.html#t" target="_blank">[21]</a>. This allows for the warming and humidification of inspired air and the trapping of pathogens <a href="references.html#t" target="_blank">[21]</a>.
+								</p>
+							</div>
+					</div>
+			</div>
+	</div>
+	<div class="footer">
+	    </br></br>
+	    <a href="references.html" target="_blank">References</a>
+	    </br>
+	</div>
+
+	<script>
+		var menu = document.getElementsByClassName("collapsible");
+		var x;
+        for (x = 0; x < menu.length; x++) {
+            menu[x].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+		document.getElementsByClassName("dropdown")[0].addEventListener("click", function () {
+            this.classList.toggle("active1");
+            var collapse = this.nextElementSibling;
+            if (collapse.style.maxHeight) {
+                collapse.style.maxHeight = null;
+            } else {
+                collapse.style.maxHeight = "100%";
+            }
+        });
+		document.getElementsByClassName("topic1")[0].addEventListener("click", function () {
+            this.classList.toggle("active1");
+            var collapse = this.nextElementSibling;
+            if (collapse.style.maxHeight) {
+                collapse.style.maxHeight = null;
+            } else {
+                collapse.style.maxHeight = "100%";
+            }
+        });
+				document.getElementsByClassName("topic2")[0].addEventListener("click", function () {
+            this.classList.toggle("active1");
+            var collapse = this.nextElementSibling;
+            if (collapse.style.maxHeight) {
+                collapse.style.maxHeight = null;
+            } else {
+                collapse.style.maxHeight = "100%";
+            }
+        });
+	</script>
+		
+
+
+  </div>
+  </body>
+</html>
