@@ -1,14 +1,18 @@
- <!DOCTYPE html>
+﻿ <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" style="width:100%">
 <head>
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body style="width:100%; min-height=100vh;">
+<body>
 	<style>
 		body {
-			background-color: mediumpurple;
+			background-image: url("https://GraceBa.github.io/OrthosesTest/background.jpg"); /*mediumpurple*/
+			width: 100%;
+			min-height: 100vh;
+			padding: 0;
+			margin: 0;
 		}
 
 		#stuff {
@@ -17,74 +21,100 @@
 			margin: 0% 10% 0% 10%;
 			background-color: white;
 		}
+
+		#header {
+			width: 100%;
+		}
+
+		h1 {
+			box-sizing: border-box;
+			background-color: #4D4789;
+			color: white;
+			width: 100%;
+			padding: 20px 10%;
+			margin: 0px;
+		}
 	</style>
 
-	<h1 style="margin: 0% 10%">Orthoses Test</h1>
-	
+	<div id="header">
+		<h1>
+			<b>Orthoses Test</b>
+		</h1>
+	</div>
+
+
 	<div id="stuff">
-		<div>
-			<div style="width:60%; float:left; padding: 5px; box-sizing: border-box; text-align:justify">
-				<p>
-					This project seeks to develop a testing protocol for assistive devices built through additive manufacturing.
-				</p>
-
-				<p>
-					A protocol is desired to ensure product quality for individually tailored devices and expand understanding of device performance as parameters are varied.
-				</p>
-
-				<p>
-					This landing page provides a link to the repository of information available for the project. If you have been here before, return to the repository via the link below. If you need access to the repository, please contact the team:
-				</p>
-
-				<p>
-					Adam Powell  &nbsp;&nbsp; u5716713@anu.edu.au
-				</p>
-				<p>
-					Grace Barclay  &nbsp;&nbsp; u6053033@anu.edu.au
-				</p>
-				<p>
-					Ira Dudley-Bestow &nbsp;&nbsp; u6404343@anu.edu.au
-				</p>
-				<p>
-					Michelle Rossouw &nbsp;&nbsp; u6305852@anu.edu.au
-				</p>
-
-
-				<a href="https://anu365-my.sharepoint.com/:f:/r/personal/u6053033_anu_edu_au/Documents/OrthosesTest?csf=1&web=1&e=0TpJ5e" target="_blank">Take me to the repository</a>
-			</div>
-
-			<br>
-
-			<div style="width: 40%; float:right;">
-				<img style="width:100%" src="https://graceba.github.io/OrthosesTest/giraffesPurple.jpg">
-			</div>
+		<div style="margin-left: auto; margin-right: auto; text-align: center; font-size: 20px;">
+			<a href="https://anu365-my.sharepoint.com/:f:/r/personal/u6053033_anu_edu_au/Documents/OrthosesTest?csf=1&web=1&e=0TpJ5e" target="_blank">Take me to the repository</a>
 		</div>
 
-		<div width="100%" style="padding: 10px 0;">
+
+		<!--<div style="width:60%; float:left; padding: 5px; box-sizing: border-box; text-align:justify">-->
+		<div style="text-align: justify; padding: 0px 10px;=">
 			<p>
+				This project seeks to develop a testing protocol for assistive devices built through additive manufacturing.
 			</p>
+
+			<p>
+				A protocol is desired to ensure product quality for individually tailored devices and expand understanding of device performance as parameters are varied.
+			</p>
+
+			<p>
+				This landing page provides a link to the repository of information available for the project. If you have been here before, return to the repository via the link below. If you need access to the repository, please contact the team:
+			</p>
+
+			<p>
+				u5716713@anu.edu.au &nbsp;&nbsp; Adam Powell
+			</p>
+			<p>
+				u6053033@anu.edu.au &nbsp;&nbsp; Grace Barclay
+			</p>
+			<p>
+				u6404343@anu.edu.au &nbsp;&nbsp; Ira Dudley-Bestow
+			</p>
+			<p>
+				u6305852@anu.edu.au &nbsp;&nbsp; Michelle Rossouw
+			</p>
+
+			<br>
+			<p style="text-align:center">~~~~~~~~~</p>
+			<br>
+			<br>
+
 			<p>
 				Click on the links within the flow diagram below to go to the resource.
 				This interactive feature will not work on all mobile devices. Head to the repository for an interactive version.
+
 			</p>
+
+		</div>
+
+		<iframe id="iFrame1" src="https://graceba.github.io/OrthosesTest/SystemsEngineeringOverview.pdf" width="80%" height="700px" style="margin: 0% 10%;">
+			<!--onload="resizeIframe(this)"-->
+		</iframe>
+		<!--<iframe id="iFrame1" src="https://anu365-my.sharepoint.com/personal/u6053033_anu_edu_au/Documents/OrthosesTest/1_ProjectManagement/Systems%20Engineering%20Principles/SystemsEngineeringOverview.pdf" width="80%" height="700px" onload="resizeIframe(this)" style="margin: 0% 10%;">
+	</iframe>-->
+
+		<br>
+		<p style="text-align:center">~~~~~~~~~</p>
+		<br>
+		<br>
+
+		<div style="width: 40%; margin-left: auto; margin-right: auto;">
+			<img style="width:100%" src="https://graceba.github.io/OrthosesTest/giraffesPurple.jpg">
 		</div>
 
 
-
-		<br><br>
-
-		<iframe id="iFrame1" src="https://graceba.github.io/OrthosesTest/SystemsEngineeringOverview.pdf" width="80%" height="700px" onload="resizeIframe(this)" style="margin: 0% 10%;">
-	</iframe>
-		<!--<iframe id="iFrame1" src="https://anu365-my.sharepoint.com/personal/u6053033_anu_edu_au/Documents/OrthosesTest/1_ProjectManagement/Systems%20Engineering%20Principles/SystemsEngineeringOverview.pdf" width="80%" height="700px" onload="resizeIframe(this)" style="margin: 0% 10%;">
-		</iframe>-->
 	</div>
+
 	
+
 
 	<script>
 		function resizeIFrameToFitContent(iFrame) {
 
 			iFrame.width = iFrame.contentWindow.document.body.scrollWidth;
-			iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+			iFrame.height = iFrame.contentWindow.document.body.scrollWidth*0.85;
 		}
 
 		window.addEventListener('DOMContentLoaded', function (e) {
