@@ -1,4 +1,5 @@
 //source code from https://github.com/scottanglr/wedding-gift-registry //
+// MIT License //
 
 import * as React from "react";
 import PropTypes from "prop-types";
