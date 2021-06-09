@@ -1,5 +1,4 @@
 //source code from https://github.com/scottanglr/wedding-gift-registry //
-// MIT License //
 
 import * as React from "react";
 import PropTypes from "prop-types";
@@ -20,6 +19,7 @@ class ReserveForm extends React.Component {
   }
 
   handleInputChange(event) {
+	console.log('Something?')
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
@@ -116,6 +116,7 @@ class ReserveForm extends React.Component {
   }
   
   render() {
+	console.log('render')
     return (
       <form onSubmit={this.onSubmit}>
       <div>
