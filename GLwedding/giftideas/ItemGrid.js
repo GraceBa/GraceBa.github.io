@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import "./ItemGrid.css";
-import Item from "../Item/Item";
+import Item from "Item";
 
 class ItemGrid extends React.Component {
   static defaultProps = {};
