@@ -116,7 +116,7 @@ class ReserveForm extends React.Component {
   }
   
   render() {
-    return ('
+    return (
       <form onSubmit={this.onSubmit}>
       <div>
         <div className={"modal-backdrop fade show"} style={{ pointerEvents: "none" }}/>
@@ -205,7 +205,7 @@ class ReserveForm extends React.Component {
         </div>
       </div>
       </form>
-    ');
+    );
   }
 }
 
