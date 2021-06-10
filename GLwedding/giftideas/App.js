@@ -2,8 +2,10 @@
 
 import React, { Component } from 'react';
 
-import './App.css';
-import "./post-bootstrap.css";
+import 'CSS/App.css';
+import "CSS/post-bootstrap.css";
+import ItemGrid from "ItemGrid";
+/*
 import ItemGrid from "./components/ItemGrid/ItemGrid";
 import Header from "./components/Header/Header";
 import Background from "./components/Background/Background";
@@ -11,7 +13,7 @@ import Description from "./components/Description/Description";
 import Footer from "./components/Footer/Footer";
 import VenueDetails from "./components/VenueDetails/VenueDetails";
 import CuteSeparator from "./components/CuteSeparator/CuteSeparator";
-
+*/
 class App extends Component {
   constructor(props){
     super(props);

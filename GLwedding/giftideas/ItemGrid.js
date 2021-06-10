@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import "./ItemGrid.css";
+import "CSS/ItemGrid.css";
 import Item from "Item";
 
 class ItemGrid extends React.Component {

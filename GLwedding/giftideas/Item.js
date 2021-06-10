@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import PropTypes from "prop-types";
-import "./Item.css";
+import "CSS/Item.css";
 import ReserveForm from "ReserveForm";
-import MonetaryForm from "../MonetaryForm/MonetaryForm";
+//import MonetaryForm from "../MonetaryForm/MonetaryForm";
 
 class Item extends React.Component {
   static defaultProps = {};
