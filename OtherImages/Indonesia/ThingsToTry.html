@@ -1,0 +1,125 @@
+﻿
+ <!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" style="width:100%">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="width:100%; min-height=100vh;">
+    <style>
+		img{
+			pointer-events:auto;
+		}
+        #firesoccer {
+            position: absolute;
+            //width: 100%;
+            height: auto;
+            bottom: 0;
+            left:0;
+            padding: 0px 0px 16% 35% ;
+            z-index: 1;
+            border-radius: 0px 0px 3px 3px; 
+			pointer-events:none;
+        }
+        #sigale {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            bottom: 0;
+            left:0;
+            padding: 0 0px 22% 10%;
+            z-index: 1;
+			pointer-events:none;
+            border-radius: 0px 0px 3px 3px;
+        }
+		#diving {
+            position: absolute;
+            //width: 100%;
+            height: auto;
+            bottom: 0;
+            left:0;
+            padding: 0 0px 18% 76%;
+            z-index: 1;
+			pointer-events:none;
+            border-radius: 0px 0px 3px 3px;
+        }
+		#toraja {
+            position: absolute;
+            //width: 100%;
+            height: auto;
+            bottom: 0;
+            left:0;
+            padding: 0 0px 13% 50%;
+            z-index: 2;
+			pointer-events:none;
+            border-radius: 0px 0px 3px 3px;
+        }
+		#tumpak {
+            position: absolute;
+            //width: 100%;
+            height: auto;
+            bottom: 0;
+            left:0;
+            padding: 0 0px 5% 30%;
+            z-index: 2;
+			pointer-events:none;
+            border-radius: 0px 0px 3px 3px;
+        }
+		
+		.linked{
+			cursor:pointer;
+			z-index: 20;
+			position: relative;
+		}
+        .board {
+          position: relative;
+		  z-index: 0;
+		  width:100%
+        }
+		.map {
+		  display: block;
+		  margin-left: auto;
+		  margin-right:auto;
+		  width: 95%;
+        }
+    </style>
+
+    <div class="container">
+        <a class="board"><!--href="https://www.google.com"-->
+			<img src="https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/OtherImages/Indonesia/map.png" class="map">
+           <!-- <img src="https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/OtherImages/Indonesia/map.png" class="map">-->
+                <div id="firesoccer">
+                    <img id="fire" src='https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/OtherImages/Indonesia/FireSoccer.png' width ="19%" style="z-index:3" class="linked" onclick="window.open('https://www.youtube.com/watch?v=6N8OERyV6iA')">
+					<!--Sebangau National Park ~ Hi Indonesia Channel-->
+                </div>
+				<div id="sigale">
+                    <img src='https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/OtherImages/Indonesia/SigaleGale.png' width="13%" style="z-index:3" class="linked" onclick="window.open('https://www.youtube.com/watch?v=uy3rkHDs4uA')" >
+					<!--Patung Menari (Sigale-gale) Lake Toba & Pulau Samosir-->
+                </div>
+				<div id="diving">
+                    <img src='https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/OtherImages/Indonesia/diving.png' width="30%" style="z-index:3" class="linked" onclick="window.open('https://www.youtube.com/watch?v=ZOLsFBnHDnM')" >
+					<!--TRUE NORTH TV: Raja Ampat Explorer (West Papua) - Episode 2-->
+                </div>
+				<div id="toraja">
+                    <img src='https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/OtherImages/Indonesia/toraja.png' width="23%" style="z-index:3" class="linked" onclick="window.open('https://www.youtube.com/watch?v=6x46n9viTts')" >
+					<!--Wonderful Indonesia | Tana Toraja, South Sulawesi-->
+                </div>
+				<div id="tumpak">
+                    <img src='https://raw.githubusercontent.com/GraceBa/GraceBa.github.io/master/OtherImages/Indonesia/waterfall.png' width="15%" style="z-index:3" class="linked" onclick="window.open('https://www.youtube.com/watch?v=hx_VwV15UfY')" >
+					<!--Tumpak Sewu Waterfall | Tripperhood -->
+                </div>
+        </a>
+    </div>
+
+    <script>
+	function myfunction1(){
+        console.log("BALLOON!");
+    }
+	
+    function myfunction2(){
+        console.log("TURTLE!");
+    }
+    </script>
+
+</body>
