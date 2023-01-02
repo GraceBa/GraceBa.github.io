@@ -124,7 +124,7 @@ function Startup()
 
     canvasController.fillStyle = backgroundColour;
     canvasController.fillRect(0, 0, canvasX, canvasY); 
-    intColour = 0;
+    intColour = 1;
     document.getElementById("Body").style.background = backgroundColour;
     document.getElementById("Button").style.background = backgroundColour;
     if (Day.getDay() == 3)
