@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <!-- By graceba -->
+  <!-- December 2023 -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Circle</title>
+    <!--<link rel="shortcut icon" href="">-->
+
+	<style>
+	/*Prematter*/
+		body{
+            /* background: url(images/trimLGreen.png) */ 
+        }
+
+	:root {
+		--colours: 'yellow';
+	}
+	
+	/*Content*/
+		.whitebox{background-color:white; color:black; width:90%; padding:30px 0; margin:0 auto;}
+		
+		#wholepage{
+			//width=100%; padding:0; margin:0;
+			overflow: auto;
+			padding: 10px;
+			width: 100%;
+			height: calc(100vh);
+		}
+		
+		
+		.spacing{
+			padding-top: 10%;
+			padding-bottom: 10%;
+		}
+		
+		@media (orientation: landscape){
+			.circle{
+				background: var(--colours); /*red;  rgb(255,0,0); //*/
+				height: 85%;
+				width: calc(85vh);
+				margin: auto auto;
+				border-radius: 50%
+			}
+		}
+		
+		@media (orientation: portrait){
+			.circle{
+				background: var(--colours); /*red;  rgb(255,0,0); //*/
+				height: calc(80vw);
+				width: 85%;
+				margin: auto auto;
+				border-radius: 50%
+			}
+		}
+
+	</style>
+	
+	<script>
+		//document.documentElement.style.setProperty('--colours','${green}');
+		var a = Math.floor(Math.random()*255)
+		var b = Math.floor(Math.random()*255)
+		var c = Math.floor(Math.random()*255)
+		var r = document.querySelector(':root');
+		r.style.setProperty('--colours','rgb('+a+','+b+','+c+')');
+	</script>
+
+  </head>
+  <body>
+	<div id="wholepage">
+		<!--<div class="spacing">-->
+			<div class="circle">
+				<p>  </p>
+			</div>
+		<!--</div>-->
+	</div>
+	
+	
+  </body>
+</html>
